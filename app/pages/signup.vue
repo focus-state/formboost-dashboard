@@ -22,16 +22,30 @@ const fields = [{
   label: 'Password',
   type: 'password',
   placeholder: 'Enter your password',
+}, {
+  name: 'password2',
+  label: 'Password Confirmation',
+  type: 'password',
+  placeholder: 'Confirm your password',
 }];
 
-const validate = (state: any) => {
+interface State {
+  name?: string;
+  email?: string;
+  password?: string;
+  password2?: string;
+}
+
+const validate = (state: State) => {
   const errors = [];
   if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
   if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
+  if (!state.password2) errors.push({ path: 'password2', message: 'Password confirmation is required' });
+  if (state.password !== state.password2) errors.push({ path: 'password2', message: 'Passwords do not match' });
   return errors;
 };
 
-function onSubmit(data: any) {
+function onSubmit(data: State) {
   console.log('Submitted', data);
 }
 </script>

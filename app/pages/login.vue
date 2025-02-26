@@ -1,10 +1,21 @@
 <script setup lang="ts">
+import { useMutation } from '@tanstack/vue-query';
+import type { ApiV1AccessLoginLoginData } from '~/client';
+
 definePageMeta({
   layout: 'auth',
 });
 
 useSeoMeta({
   title: 'Login',
+});
+
+const { AccessService } = useApi();
+
+const { isPending, isError, error, isSuccess, mutate, data: loginData } = useMutation({
+  mutationFn: (data: Omit<ApiV1AccessLoginLoginData, 'url'>) => {
+    return AccessService.apiV1AccessLoginLogin(data);
+  },
 });
 
 const fields = [{
@@ -19,20 +30,31 @@ const fields = [{
   placeholder: 'Enter your password',
 }];
 
-const validate = (state: any) => {
+interface State {
+  email?: string;
+  password?: string;
+}
+
+const validate = (state: State) => {
   const errors = [];
   if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
   if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
   return errors;
 };
 
-function onSubmit(data: any) {
-  console.log('Submitted', data);
+async function onSubmit(state: State) {
+  mutate({ body: { username: state.email, password: state.password } });
 }
 </script>
 
 <template>
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+    <p>isPending: {{ isPending }}</p>
+    <p>isError: {{ isError }}</p>
+    <p>error: {{ error }}</p>
+    <p>isSuccess: {{ isSuccess }}</p>
+    <p>data: {{ loginData }}</p>
+
     <UAuthForm
       :fields="fields"
       :validate="validate"

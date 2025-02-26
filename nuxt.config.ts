@@ -54,6 +54,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      baseUrl: 'http://localhost:8000',
       FORM_URL: process.env.FORM_URL,
     },
   },
