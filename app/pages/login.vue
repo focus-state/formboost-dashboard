@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { z } from 'zod';
 import { useMutation } from '@tanstack/vue-query';
 import type { ApiV1AccessLoginLoginData } from '~/client';
 
@@ -12,9 +13,12 @@ useSeoMeta({
 
 const { AccessService } = useApi();
 
-const { isPending, isError, error, isSuccess, mutate, data: loginData } = useMutation({
+const { isPending, error, mutateAsync } = useMutation({
   mutationFn: (data: Omit<ApiV1AccessLoginLoginData, 'url'>) => {
     return AccessService.apiV1AccessLoginLogin(data);
+  },
+  async onSuccess() {
+    await navigateTo('/');
   },
 });
 
@@ -30,35 +34,32 @@ const fields = [{
   placeholder: 'Enter your password',
 }];
 
-interface State {
-  email?: string;
-  password?: string;
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
+
+type Schema = z.output<typeof schema>;
+
+async function onSubmit(data: Schema) {
+  try {
+    await mutateAsync({ body: { username: data.email, password: data.password } });
+  }
+  catch {
+    // swallow error
+  }
 }
 
-const validate = (state: State) => {
-  const errors = [];
-  if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
-  if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
-  return errors;
-};
-
-async function onSubmit(state: State) {
-  mutate({ body: { username: state.email, password: state.password } });
-}
+const errorDetail = computed(() => error.value?.response?.data?.detail);
 </script>
 
 <template>
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
-    <p>isPending: {{ isPending }}</p>
-    <p>isError: {{ isError }}</p>
-    <p>error: {{ error }}</p>
-    <p>isSuccess: {{ isSuccess }}</p>
-    <p>data: {{ loginData }}</p>
-
     <UAuthForm
       :fields="fields"
-      :validate="validate"
+      :schema="schema"
       title="Login"
+      :loading="isPending"
       align="top"
       icon="i-heroicons-user-circle"
       :ui="{ base: 'text-center', footer: 'text-center' }"
@@ -70,6 +71,13 @@ async function onSubmit(state: State) {
           to="/signup"
           class="text-primary font-medium"
         >Sign up</NuxtLink>.
+
+        <div
+          v-if="error && errorDetail"
+          class="text-red-500 dark:text-red-400 mt-2"
+        >
+          {{ errorDetail }}
+        </div>
       </template>
 
       <template #password-hint>

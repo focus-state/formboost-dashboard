@@ -4,7 +4,7 @@ import type { Period, Range } from '~/types';
 
 const { isNotificationsSlideoverOpen } = useDashboard();
 
-const items = [[
+const _items = [[
   {
     label: 'New Project',
     icon: 'i-heroicons-paper-airplane',

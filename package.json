@@ -65,7 +65,8 @@
     "sass": "^1.77.4",
     "typescript": "^5.4.5",
     "v-calendar": "^3.1.2",
-    "vue-tsc": "^2.1.10"
+    "vue-tsc": "^2.1.10",
+    "zod": "^3.24.2"
   },
   "resolutions": {
     "vue-tsc": "2.1.10"

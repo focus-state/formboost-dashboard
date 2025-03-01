@@ -34,8 +34,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Document created, URL follows",
-                        "headers": {},
+                        "description": "Additional response",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -88,16 +87,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/LoginErrorContainer"
-                                }
-                            }
-                        }
-                    },
-                    "200": {
-                        "description": "Additional response",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/OAuth2Login"
                                 }
                             }
                         }
@@ -2389,16 +2378,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -2410,6 +2389,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2491,16 +2480,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -2512,6 +2491,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2607,7 +2596,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2617,7 +2606,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3500,16 +3489,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -3521,6 +3500,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3602,16 +3591,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -3623,6 +3602,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3697,16 +3686,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -3718,6 +3697,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4235,16 +4224,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -4256,6 +4235,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4337,16 +4326,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -4358,6 +4337,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4432,16 +4421,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -4453,6 +4432,16 @@
                     },
                     {
                         "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -6834,7 +6823,7 @@
             },
             "LoginErrorContainer": {
                 "properties": {
-                    "status_code": {
+                    "statusCode": {
                         "type": "integer",
                         "const": 403,
                         "examples": [
@@ -6851,12 +6840,12 @@
                 "type": "object",
                 "required": [
                     "detail",
-                    "status_code"
+                    "statusCode"
                 ],
                 "title": "LoginErrorContainer",
                 "examples": [
                     {
-                        "status_code": 403,
+                        "statusCode": 403,
                         "detail": "JIgNZYFcagWptUqCwdER"
                     }
                 ]
@@ -7051,13 +7040,13 @@
             },
             "OAuth2Login": {
                 "properties": {
-                    "access_token": {
+                    "accessToken": {
                         "type": "string"
                     },
-                    "token_type": {
+                    "tokenType": {
                         "type": "string"
                     },
-                    "refresh_token": {
+                    "refreshToken": {
                         "oneOf": [
                             {
                                 "type": "string"
@@ -7067,7 +7056,7 @@
                             }
                         ]
                     },
-                    "expires_in": {
+                    "expiresIn": {
                         "oneOf": [
                             {
                                 "type": "integer"
@@ -7080,8 +7069,8 @@
                 },
                 "type": "object",
                 "required": [
-                    "access_token",
-                    "token_type"
+                    "accessToken",
+                    "tokenType"
                 ],
                 "title": "OAuth2Login"
             },

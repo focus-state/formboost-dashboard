@@ -123,7 +123,7 @@ export type FormUpdate = {
 };
 
 export type LoginErrorContainer = {
-  status_code: 403;
+  statusCode: 403;
   detail: string;
 };
 
@@ -151,10 +151,10 @@ export type NotificationSettingsUpdate = {
 };
 
 export type OAuth2Login = {
-  access_token: string;
-  token_type: string;
-  refresh_token?: string | null;
-  expires_in?: number | null;
+  accessToken: string;
+  tokenType: string;
+  refreshToken?: string | null;
+  expiresIn?: number | null;
 };
 
 export type Project = {
@@ -308,10 +308,6 @@ export type ApiV1AccessLoginLoginError = ApiV1AccessLoginLoginErrors[keyof ApiV1
 export type ApiV1AccessLoginLoginResponses = {
   /**
      * Additional response
-     */
-  200: OAuth2Login;
-  /**
-     * Document created, URL follows
      */
   201: OAuth2Login;
 };
@@ -997,9 +993,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdD
   body?: never;
   path: {
     submission_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1031,9 +1027,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
   body?: never;
   path: {
     submission_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1067,8 +1063,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdF
     submission_id: string;
     form_field: string;
     form_id: string;
-    project_id: string;
     team_id: string;
+    project_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}/file/{form_field}';
@@ -1253,9 +1249,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
   body?: never;
   path: {
     form_field_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1287,9 +1283,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
   body?: never;
   path: {
     form_field_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1321,9 +1317,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
   body: FormFieldUpdate;
   path: {
     form_field_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1434,9 +1430,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
   body?: never;
   path: {
     notification_settings_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1468,9 +1464,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
   body?: never;
   path: {
     notification_settings_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1502,9 +1498,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
   body: NotificationSettingsUpdate;
   path: {
     notification_settings_id: string;
-    form_id: string;
     project_id: string;
     team_id: string;
+    form_id: string;
   };
   query?: never;
   url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
