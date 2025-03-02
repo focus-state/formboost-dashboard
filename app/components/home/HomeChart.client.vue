@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { eachDayOfInterval, eachWeekOfInterval, eachMonthOfInterval, format } from 'date-fns';
-import { VisXYContainer, VisLine, VisAxis, VisArea, VisCrosshair, VisTooltip } from '@unovis/vue';
+import { VisArea, VisAxis, VisCrosshair, VisLine, VisTooltip, VisXYContainer } from '@unovis/vue';
+import { eachDayOfInterval, eachMonthOfInterval, eachWeekOfInterval, format } from 'date-fns';
+
 import type { Period, Range } from '~/types';
 
 const cardRef = ref<HTMLElement | null>(null);
@@ -25,11 +26,11 @@ const { width } = useElementSize(cardRef);
 
 // We use `useAsyncData` here to have same random data on the client and server
 const { data } = await useAsyncData<DataRecord[]>(async () => {
-  const dates = ({
+  const dates = {
     daily: eachDayOfInterval,
     weekly: eachWeekOfInterval,
     monthly: eachMonthOfInterval,
-  })[props.period](props.range);
+  }[props.period](props.range);
 
   const min = 1000;
   const max = 10000;
@@ -48,11 +49,11 @@ const total = computed(() => data.value.reduce((acc: number, { amount }) => acc 
 const formatNumber = new Intl.NumberFormat('en', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format;
 
 const formatDate = (date: Date): string => {
-  return ({
+  return {
     daily: format(date, 'd MMM'),
     weekly: format(date, 'd MMM'),
     monthly: format(date, 'MMM yyy'),
-  })[props.period];
+  }[props.period];
 };
 
 const xTicks = (i: number) => {
@@ -73,10 +74,10 @@ const template = (d: DataRecord) => `${formatDate(d.date)}: ${formatNumber(d.amo
   >
     <template #header>
       <div>
-        <p class="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
+        <p class="mb-1 text-sm font-medium text-gray-500 dark:text-gray-400">
           Revenue
         </p>
-        <p class="text-3xl text-gray-900 dark:text-white font-semibold">
+        <p class="text-3xl font-semibold text-gray-900 dark:text-white">
           {{ formatNumber(total) }}
         </p>
       </div>

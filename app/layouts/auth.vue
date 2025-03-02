@@ -7,7 +7,7 @@ useHead({
 </script>
 
 <template>
-  <div class="h-screen flex items-center justify-center overlay">
+  <div class="overlay flex h-screen items-center justify-center">
     <div class="gradient" />
 
     <UButton

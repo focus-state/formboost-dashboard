@@ -31,7 +31,15 @@ const isNewUserModalOpen = ref(false);
 
 const columns = computed(() => defaultColumns.filter(column => selectedColumns.value.includes(column)));
 
-const query = computed(() => ({ q: q.value, statuses: selectedStatuses.value, locations: selectedLocations.value, sort: sort.value.column, order: sort.value.direction }));
+const query = computed(() => {
+  return {
+    q: q.value,
+    statuses: selectedStatuses.value,
+    locations: selectedLocations.value,
+    sort: sort.value.column,
+    order: sort.value.direction,
+  };
+});
 
 const { data: users, pending } = await useFetch<User[]>('/api/users', { query, default: () => [] });
 
@@ -53,8 +61,7 @@ function onSelect(row: User) {
   const index = selected.value.findIndex(item => item.id === row.id);
   if (index === -1) {
     selected.value.push(row);
-  }
-  else {
+  } else {
     selected.value.splice(index, 1);
   }
 }
@@ -160,7 +167,7 @@ defineShortcuts({
               size="xs"
             />
 
-            <span class="text-gray-900 dark:text-white font-medium">{{ row.name }}</span>
+            <span class="font-medium text-gray-900 dark:text-white">{{ row.name }}</span>
           </div>
         </template>
 

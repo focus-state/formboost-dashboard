@@ -5,1099 +5,1111 @@ import type { ApiV1AccessLoginLoginData, ApiV1AccessLoginLoginResponse, ApiV1Acc
 import { client as _heyApiClient } from './client.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = ClientOptions<TData, ThrowOnError> & {
-  /**
+    /**
      * You can provide a client instance returned by `createClient()` instead of
      * individual options. This might be also useful if you want to implement a
      * custom client.
      */
-  client?: Client;
-  /**
+    client?: Client;
+    /**
      * You can pass arbitrary values through the `meta` object. This can be
      * used to access values that aren't defined as part of the SDK function.
      */
-  meta?: Record<string, unknown>;
+    meta?: Record<string, unknown>;
 };
 
 export class AccessService {
-  /**
+    /**
      * Login
      * Authenticate a user.
      */
-  public static apiV1AccessLoginLogin<ThrowOnError extends boolean = false>(options: Options<ApiV1AccessLoginLoginData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1AccessLoginLoginResponse, ApiV1AccessLoginLoginError, ThrowOnError>({
-      ...urlSearchParamsBodySerializer,
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/access/login',
-      ...options,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1AccessLoginLogin<ThrowOnError extends boolean = false>(options: Options<ApiV1AccessLoginLoginData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1AccessLoginLoginResponse, ApiV1AccessLoginLoginError, ThrowOnError>({
+            ...urlSearchParamsBodySerializer,
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/access/login',
+            ...options,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * Logout
      * Log a user out.
      */
-  public static apiV1AccessLogoutLogout<ThrowOnError extends boolean = false>(options?: Options<ApiV1AccessLogoutLogoutData, ThrowOnError>) {
-    return (options?.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/access/logout',
-      ...options,
-    });
-  }
+    public static apiV1AccessLogoutLogout<ThrowOnError extends boolean = false>(options?: Options<ApiV1AccessLogoutLogoutData, ThrowOnError>) {
+        return (options?.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/access/logout',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * Signup
      * User Signup.
      */
-  public static apiV1AccessSignupSignup<ThrowOnError extends boolean = false>(options: Options<ApiV1AccessSignupSignupData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1AccessSignupSignupResponse, ApiV1AccessSignupSignupError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/access/signup',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1AccessSignupSignup<ThrowOnError extends boolean = false>(options: Options<ApiV1AccessSignupSignupData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1AccessSignupSignupResponse, ApiV1AccessSignupSignupError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/access/signup',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class UserAdminService {
-  /**
+    /**
      * ListUsers
      * List users.
      */
-  public static apiV1UsersListUsers<ThrowOnError extends boolean = false>(options?: Options<ApiV1UsersListUsersData, ThrowOnError>) {
-    return (options?.client ?? _heyApiClient).get<ApiV1UsersListUsersResponse, ApiV1UsersListUsersError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/users',
-      ...options,
-    });
-  }
+    public static apiV1UsersListUsers<ThrowOnError extends boolean = false>(options?: Options<ApiV1UsersListUsersData, ThrowOnError>) {
+        return (options?.client ?? _heyApiClient).get<ApiV1UsersListUsersResponse, ApiV1UsersListUsersError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/users',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateUser
      * Create a new user.
      */
-  public static apiV1UsersCreateUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersCreateUserData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1UsersCreateUserResponse, ApiV1UsersCreateUserError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/users',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1UsersCreateUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersCreateUserData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1UsersCreateUserResponse, ApiV1UsersCreateUserError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/users',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteUser
      * Delete a user from the system.
      */
-  public static apiV1UsersUserIdDeleteUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersUserIdDeleteUserData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1UsersUserIdDeleteUserResponse, ApiV1UsersUserIdDeleteUserError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/users/{user_id}',
-      ...options,
-    });
-  }
+    public static apiV1UsersUserIdDeleteUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersUserIdDeleteUserData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1UsersUserIdDeleteUserResponse, ApiV1UsersUserIdDeleteUserError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/users/{user_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetUser
      * Get a user.
      */
-  public static apiV1UsersUserIdGetUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersUserIdGetUserData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1UsersUserIdGetUserResponse, ApiV1UsersUserIdGetUserError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/users/{user_id}',
-      ...options,
-    });
-  }
+    public static apiV1UsersUserIdGetUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersUserIdGetUserData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1UsersUserIdGetUserResponse, ApiV1UsersUserIdGetUserError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/users/{user_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateUser
      * Update a user.
      */
-  public static apiV1UsersUserIdUpdateUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersUserIdUpdateUserData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1UsersUserIdUpdateUserResponse, ApiV1UsersUserIdUpdateUserError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/users/{user_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1UsersUserIdUpdateUser<ThrowOnError extends boolean = false>(options: Options<ApiV1UsersUserIdUpdateUserData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1UsersUserIdUpdateUserResponse, ApiV1UsersUserIdUpdateUserError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/users/{user_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class UserService {
-  /**
+    /**
      * Profile
      * User Profile.
      */
-  public static apiV1UsersMeProfile<ThrowOnError extends boolean = false>(options?: Options<ApiV1UsersMeProfileData, ThrowOnError>) {
-    return (options?.client ?? _heyApiClient).get<ApiV1UsersMeProfileResponse, unknown, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/users/me',
-      ...options,
-    });
-  }
+    public static apiV1UsersMeProfile<ThrowOnError extends boolean = false>(options?: Options<ApiV1UsersMeProfileData, ThrowOnError>) {
+        return (options?.client ?? _heyApiClient).get<ApiV1UsersMeProfileResponse, unknown, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/users/me',
+            ...options
+        });
+    }
+
 }
 
 export class BillingService {
-  /**
+    /**
      * HandleEvent
      */
-  public static apiV1BillingWebhookEventHandleEvent<ThrowOnError extends boolean = false>(options: Options<ApiV1BillingWebhookEventHandleEventData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<unknown, ApiV1BillingWebhookEventHandleEventError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/billing/webhook-event',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1BillingWebhookEventHandleEvent<ThrowOnError extends boolean = false>(options: Options<ApiV1BillingWebhookEventHandleEventData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<unknown, ApiV1BillingWebhookEventHandleEventError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/billing/webhook-event',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class DomainsService {
-  /**
+    /**
      * ListDomains
      * List domains.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdDomainsListDomains<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/domains',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdDomainsListDomains<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/domains',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateDomain
      * Create a new domain.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/domains',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/domains',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteDomain
      * Delete a domain.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetDomain
      * Get details about a domain.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateDomain
      * Update a domain.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomain<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class FormsService {
-  /**
+    /**
      * ListForms
      * List forms.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsListForms<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsListForms<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateForm
      * Create a new form.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsCreateForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsCreateForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteForm
      * Delete a form.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetForm
      * Get details about a form.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateForm
      * Update a form.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateForm<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class SubmissionsService {
-  /**
+    /**
      * CreateSubmission
      * Create a new submission.
      */
-  public static apiV1fFormIdCreateSubmission<ThrowOnError extends boolean = false>(options: Options<ApiV1fFormIdCreateSubmissionData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1fFormIdCreateSubmissionResponse, ApiV1fFormIdCreateSubmissionError, ThrowOnError>({
-      ...formDataBodySerializer,
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/f/{form_id}',
-      ...options,
-      headers: {
-        'Content-Type': null,
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1fFormIdCreateSubmission<ThrowOnError extends boolean = false>(options: Options<ApiV1fFormIdCreateSubmissionData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1fFormIdCreateSubmissionResponse, ApiV1fFormIdCreateSubmissionError, ThrowOnError>({
+            ...formDataBodySerializer,
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/f/{form_id}',
+            ...options,
+            headers: {
+                'Content-Type': null,
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteSubmission
      * Delete a submission.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmission<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmission<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetSubmission
      * Get details about a submission.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmission<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmission<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetSubmissionFile
      * Download the file for a specific form field.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFile<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}/file/{form_field}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFile<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}/file/{form_field}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * ListSubmissions
      * List submissions.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissions<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissions<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions',
+            ...options
+        });
+    }
+
 }
 
 export class FormFieldsService {
-  /**
+    /**
      * ListFormFields
      * List form fields.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFields<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFields<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateFormField
      * Create a new form field.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteFormField
      * Delete a form field.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetFormField
      * Get details about a form field.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateFormField
      * Update a form field.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormField<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class NotificationSettingsService {
-  /**
+    /**
      * ListNotificationSettingss
      * List notification_settingss records.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingss<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingss<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateNotificationSettings
      * Create a new notification_settings record.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteNotificationSettings
      * Delete a notification_settings record.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetNotificationSettings
      * Get details about a notification_settings record.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateNotificationSettings
      * Update a notification_settings record.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettings<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class ProjectsService {
-  /**
+    /**
      * ListProjects
      * List projects.
      */
-  public static apiV1TeamsTeamIdProjectsListProjects<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsListProjectsData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsListProjectsResponse, ApiV1TeamsTeamIdProjectsListProjectsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsListProjects<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsListProjectsData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsListProjectsResponse, ApiV1TeamsTeamIdProjectsListProjectsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateProject
      * Create a new project.
      */
-  public static apiV1TeamsTeamIdProjectsCreateProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsCreateProjectData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsCreateProjectResponse, ApiV1TeamsTeamIdProjectsCreateProjectError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsCreateProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsCreateProjectData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1TeamsTeamIdProjectsCreateProjectResponse, ApiV1TeamsTeamIdProjectsCreateProjectError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteProject
      * Delete a project.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdDeleteProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdDeleteProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetProject
      * Get details about a project.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdGetProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdGetProjectData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdGetProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdGetProjectError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdGetProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdGetProjectData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdProjectsProjectIdGetProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdGetProjectError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateProject
      * Update a project.
      */
-  public static apiV1TeamsTeamIdProjectsProjectIdUpdateProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/projects/{project_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdProjectsProjectIdUpdateProject<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/projects/{project_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
+
 }
 
 export class UtilsService {
-  /**
+    /**
      * CheckHealth
      * Check the health of the service.
      */
-  public static apiV1HealthCheckHealth<ThrowOnError extends boolean = false>(options?: Options<ApiV1HealthCheckHealthData, ThrowOnError>) {
-    return (options?.client ?? _heyApiClient).get<ApiV1HealthCheckHealthResponse, unknown, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/health',
-      ...options,
-    });
-  }
+    public static apiV1HealthCheckHealth<ThrowOnError extends boolean = false>(options?: Options<ApiV1HealthCheckHealthData, ThrowOnError>) {
+        return (options?.client ?? _heyApiClient).get<ApiV1HealthCheckHealthResponse, unknown, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/health',
+            ...options
+        });
+    }
+
 }
 
 export class TeamsService {
-  /**
+    /**
      * ListTeams
      * List teams.
      */
-  public static apiV1TeamsListTeams<ThrowOnError extends boolean = false>(options?: Options<ApiV1TeamsListTeamsData, ThrowOnError>) {
-    return (options?.client ?? _heyApiClient).get<ApiV1TeamsListTeamsResponse, ApiV1TeamsListTeamsError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams',
-      ...options,
-    });
-  }
+    public static apiV1TeamsListTeams<ThrowOnError extends boolean = false>(options?: Options<ApiV1TeamsListTeamsData, ThrowOnError>) {
+        return (options?.client ?? _heyApiClient).get<ApiV1TeamsListTeamsResponse, ApiV1TeamsListTeamsError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * CreateTeam
      * Create a new team.
      */
-  public static apiV1TeamsCreateTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsCreateTeamData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).post<ApiV1TeamsCreateTeamResponse, ApiV1TeamsCreateTeamError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsCreateTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsCreateTeamData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).post<ApiV1TeamsCreateTeamResponse, ApiV1TeamsCreateTeamError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * DeleteTeam
      * Delete a team.
      */
-  public static apiV1TeamsTeamIdDeleteTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdDeleteTeamData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdDeleteTeamResponse, ApiV1TeamsTeamIdDeleteTeamError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdDeleteTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdDeleteTeamData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).delete<ApiV1TeamsTeamIdDeleteTeamResponse, ApiV1TeamsTeamIdDeleteTeamError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * GetTeam
      * Get details about a team.
      */
-  public static apiV1TeamsTeamIdGetTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdGetTeamData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdGetTeamResponse, ApiV1TeamsTeamIdGetTeamError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdGetTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdGetTeamData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdGetTeamResponse, ApiV1TeamsTeamIdGetTeamError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}',
+            ...options
+        });
+    }
 
-  /**
+    /**
      * UpdateTeam
      * Update a team.
      */
-  public static apiV1TeamsTeamIdUpdateTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdUpdateTeamData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdUpdateTeamResponse, ApiV1TeamsTeamIdUpdateTeamError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}',
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-    });
-  }
+    public static apiV1TeamsTeamIdUpdateTeam<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdUpdateTeamData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).patch<ApiV1TeamsTeamIdUpdateTeamResponse, ApiV1TeamsTeamIdUpdateTeamError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options?.headers
+            }
+        });
+    }
 
-  /**
+    /**
      * GetStorageDirectorySize
      * Get the size of the bucket.
      */
-  public static apiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySize<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeData, ThrowOnError>) {
-    return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponse, ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeError, ThrowOnError>({
-      security: [
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-        {
-          scheme: 'bearer',
-          type: 'http',
-        },
-      ],
-      url: '/api/v1/teams/{team_id}/storage-directory-size',
-      ...options,
-    });
-  }
+    public static apiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySize<ThrowOnError extends boolean = false>(options: Options<ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeData, ThrowOnError>) {
+        return (options.client ?? _heyApiClient).get<ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponse, ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeError, ThrowOnError>({
+            security: [
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                },
+                {
+                    scheme: 'bearer',
+                    type: 'http'
+                }
+            ],
+            url: '/api/v1/teams/{team_id}/storage-directory-size',
+            ...options
+        });
+    }
+
 }

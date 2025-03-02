@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { sub } from 'date-fns';
+
 import type { Period, Range } from '~/types';
 
 const { isNotificationsSlideoverOpen } = useDashboard();
@@ -42,7 +43,7 @@ const period = ref<Period>('daily');
               >
                 <UIcon
                   name="i-heroicons-bell"
-                  class="w-5 h-5"
+                  class="size-5"
                 />
               </UChip>
             </UButton>
@@ -73,7 +74,7 @@ const period = ref<Period>('daily');
           :range="range"
         />
 
-        <div class="grid lg:grid-cols-2 lg:items-start gap-8 mt-8">
+        <div class="mt-8 grid gap-8 lg:grid-cols-2 lg:items-start">
           <!-- ~/components/home/HomeSales.vue -->
           <HomeSales />
           <!-- ~/components/home/HomeCountries.vue -->

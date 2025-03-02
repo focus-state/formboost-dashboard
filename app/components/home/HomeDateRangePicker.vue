@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { sub, format, isSameDay, type Duration } from 'date-fns';
+import { type Duration, format, isSameDay, sub } from 'date-fns';
 import type { Range } from '~/types';
 
 const ranges = [
@@ -39,8 +39,8 @@ function selectRange(duration: Duration) {
     </template>
 
     <template #panel="{ close }">
-      <div class="flex items-center sm:divide-x divide-gray-200 dark:divide-gray-800">
-        <div class="hidden sm:flex flex-col py-4">
+      <div class="flex items-center divide-gray-200 sm:divide-x dark:divide-gray-800">
+        <div class="hidden flex-col py-4 sm:flex">
           <UButton
             v-for="(range, index) in ranges"
             :key="index"

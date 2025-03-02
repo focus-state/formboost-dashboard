@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { format, isToday } from 'date-fns';
+
 import type { Mail } from '~/types';
 
 defineProps({
@@ -25,10 +26,10 @@ defineProps({
         />
 
         <div class="min-w-0">
-          <p class="text-gray-900 dark:text-white font-semibold">
+          <p class="font-semibold text-gray-900 dark:text-white">
             {{ mail.from.name }}
           </p>
-          <p class="text-gray-500 dark:text-gray-400 font-medium">
+          <p class="font-medium text-gray-500 dark:text-gray-400">
             {{ mail.subject }}
           </p>
         </div>

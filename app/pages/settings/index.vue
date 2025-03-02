@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { z } from 'zod';
+
 import type { FormSubmitEvent } from '#ui/types';
 
 const fileRef = ref<HTMLInputElement>();
@@ -13,7 +14,7 @@ const schema = z.object({
   passwordCurrent: z.string().optional(),
   passwordNew: z.string().min(8).optional(),
 }).refine(data => (data.passwordCurrent && !data.passwordNew) || (!data.passwordCurrent && data.passwordNew), {
-  message: `Passwords don't match.`, path: ['passwordNew'],
+  message: 'Passwords don\'t match.', path: ['passwordNew'],
 });
 
 type Schema = z.output<typeof schema>;
@@ -88,7 +89,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           label="Name"
           description="Will appear on receipts, invoices, and other communication."
           required
-          class="grid grid-cols-2 gap-2 items-center"
+          class="grid grid-cols-2 items-center gap-2"
           :ui="{ container: '' }"
         >
           <UInput
@@ -132,7 +133,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
             input-class="ps-[77px]"
           >
             <template #leading>
-              <span class="text-gray-500 dark:text-gray-400 text-sm">nuxt.com/</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">nuxt.com/</span>
             </template>
           </UInput>
         </UFormGroup>

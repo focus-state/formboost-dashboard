@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 
 export const useMainStore = defineStore('Main', () => {
+
   /**
    * Reset stores that should be cleared when the user is no longer
    * authenticated.
