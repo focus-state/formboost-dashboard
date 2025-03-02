@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '#ui/types';
+import { z } from 'zod';
+import type { FormSubmitEvent } from '#ui/types';
 
 const emit = defineEmits(['close']);
+
+const schema = z.object({
+  email: z.string().email(),
+  role: z.enum(['admin', 'member']),
+});
+
+type Schema = z.output<typeof schema>;
 
 const state = reactive({
   role: 'member',
   email: undefined,
 });
 
-// https://ui.nuxt.com/components/form
-const validate = (state: any): FormError[] => {
-  const errors = [];
-  if (!state.email) errors.push({ path: 'email', message: 'Please enter an email.' });
-  return errors;
-};
-
-async function onSubmit(event: FormSubmitEvent<any>) {
+async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with data
   console.log(event.data);
 
@@ -25,7 +26,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
 <template>
   <UForm
-    :validate="validate"
+    :schema="schema"
     :validate-on="['submit']"
     :state="state"
     class="space-y-4"

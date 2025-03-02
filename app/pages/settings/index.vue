@@ -1,8 +1,22 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '#ui/types';
+import { z } from 'zod';
+import type { FormSubmitEvent } from '#ui/types';
 
 const fileRef = ref<HTMLInputElement>();
 const isDeleteAccountModalOpen = ref(false);
+
+const schema = z.object({
+  name: z.string().nonempty(),
+  email: z.string().email(),
+  username: z.string().nonempty(),
+  avatar: z.string().optional(),
+  passwordCurrent: z.string().optional(),
+  passwordNew: z.string().min(8).optional(),
+}).refine(data => (data.passwordCurrent && !data.passwordNew) || (!data.passwordCurrent && data.passwordNew), {
+  message: `Passwords don't match.`, path: ['passwordNew'],
+});
+
+type Schema = z.output<typeof schema>;
 
 const state = reactive({
   name: 'Benjamin Canac',
@@ -10,19 +24,11 @@ const state = reactive({
   username: 'benjamincanac',
   avatar: '',
   bio: '',
-  password_current: '',
-  password_new: '',
+  passwordCurrent: '',
+  passwordNew: '',
 });
 
 const toast = useToast();
-
-function validate(state: any): FormError[] {
-  const errors = [];
-  if (!state.name) errors.push({ path: 'name', message: 'Please enter your name.' });
-  if (!state.email) errors.push({ path: 'email', message: 'Please enter your email.' });
-  if ((state.password_current && !state.password_new) || (!state.password_current && state.password_new)) errors.push({ path: 'password', message: 'Please enter a valid password.' });
-  return errors;
-}
 
 function onFileChange(e: Event) {
   const input = e.target as HTMLInputElement;
@@ -38,7 +44,7 @@ function onFileClick() {
   fileRef.value?.click();
 }
 
-async function onSubmit(event: FormSubmitEvent<any>) {
+async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with data
   console.log(event.data);
 
@@ -61,7 +67,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
     <UForm
       :state="state"
-      :validate="validate"
+      :schema="schema"
       :validate-on="['submit']"
       @submit="onSubmit"
     >
@@ -169,14 +175,14 @@ async function onSubmit(event: FormSubmitEvent<any>) {
         >
           <UInput
             id="password"
-            v-model="state.password_current"
+            v-model="state.passwordCurrent"
             type="password"
             placeholder="Current password"
             size="md"
           />
           <UInput
-            id="password_new"
-            v-model="state.password_new"
+            id="passwordNew"
+            v-model="state.passwordNew"
             type="password"
             placeholder="New password"
             size="md"

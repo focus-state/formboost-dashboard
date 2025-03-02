@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { z } from 'zod';
+import type { FormSubmitEvent } from '#ui/types';
+
 definePageMeta({
   layout: 'auth',
 });
@@ -22,17 +25,26 @@ const fields = [{
   label: 'Password',
   type: 'password',
   placeholder: 'Enter your password',
+}, {
+  name: 'password2',
+  label: 'Password Confirmation',
+  type: 'password',
+  placeholder: 'Confirm your password',
 }];
 
-const validate = (state: any) => {
-  const errors = [];
-  if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
-  if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
-  return errors;
-};
+const schema = z.object({
+  name: z.string().nonempty(),
+  email: z.string().email(),
+  password: z.string().optional(),
+  password2: z.string().min(8).optional(),
+}).refine(data => (data.password && !data.password2) || (!data.password && data.password2), {
+  message: `Passwords don't match.`, path: ['password2'],
+});
 
-function onSubmit(data: any) {
-  console.log('Submitted', data);
+type Schema = z.output<typeof schema>;
+
+function onSubmit(event: FormSubmitEvent<Schema>) {
+  console.log('Submitted', event.data);
 }
 </script>
 
@@ -40,7 +52,7 @@ function onSubmit(data: any) {
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
     <UAuthForm
       :fields="fields"
-      :validate="validate"
+      :schema="schema"
       align="top"
       title="Create an account"
       :ui="{ base: 'text-center', footer: 'text-center' }"

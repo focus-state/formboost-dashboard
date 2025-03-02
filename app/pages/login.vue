@@ -1,10 +1,25 @@
 <script setup lang="ts">
+import { z } from 'zod';
+import { useMutation } from '@tanstack/vue-query';
+import type { ApiV1AccessLoginLoginData } from '~/client';
+
 definePageMeta({
   layout: 'auth',
 });
 
 useSeoMeta({
   title: 'Login',
+});
+
+const { AccessService } = useApi();
+
+const { isPending, error, mutateAsync } = useMutation({
+  mutationFn: (data: Omit<ApiV1AccessLoginLoginData, 'url'>) => {
+    return AccessService.apiV1AccessLoginLogin(data);
+  },
+  async onSuccess() {
+    await navigateTo('/');
+  },
 });
 
 const fields = [{
@@ -19,24 +34,32 @@ const fields = [{
   placeholder: 'Enter your password',
 }];
 
-const validate = (state: any) => {
-  const errors = [];
-  if (!state.email) errors.push({ path: 'email', message: 'Email is required' });
-  if (!state.password) errors.push({ path: 'password', message: 'Password is required' });
-  return errors;
-};
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
 
-function onSubmit(data: any) {
-  console.log('Submitted', data);
+type Schema = z.output<typeof schema>;
+
+async function onSubmit(data: Schema) {
+  try {
+    await mutateAsync({ body: { username: data.email, password: data.password } });
+  }
+  catch {
+    // swallow error
+  }
 }
+
+const errorDetail = computed(() => error.value?.response?.data?.detail);
 </script>
 
 <template>
   <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
     <UAuthForm
       :fields="fields"
-      :validate="validate"
+      :schema="schema"
       title="Login"
+      :loading="isPending"
       align="top"
       icon="i-heroicons-user-circle"
       :ui="{ base: 'text-center', footer: 'text-center' }"
@@ -48,6 +71,13 @@ function onSubmit(data: any) {
           to="/signup"
           class="text-primary font-medium"
         >Sign up</NuxtLink>.
+
+        <div
+          v-if="error && errorDetail"
+          class="text-red-500 dark:text-red-400 mt-2"
+        >
+          {{ errorDetail }}
+        </div>
       </template>
 
       <template #password-hint>
