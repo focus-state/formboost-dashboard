@@ -8,8 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "oxlint . && eslint .",
+    "lint:fix": "oxlint --fix && eslint . --fix",
     "openapi-ts": "openapi-ts",
     "typecheck": "nuxt typecheck",
     "prepare": "husky"
@@ -34,7 +34,7 @@
     "@nuxtjs/tailwindcss": "^6.12.0",
     "@pinia/nuxt": "^0.5.5",
     "@sentry/nuxt": "^8.34.0",
-    "@stylistic/eslint-plugin": "^2.13.0",
+    "@stylistic/eslint-plugin-ts": "^4.1.0",
     "@tanstack/vue-query": "^5.66.9",
     "@types/node": "^20",
     "@unovis/ts": "^1.5.0",
@@ -46,6 +46,7 @@
     "@zadigetvoltaire/nuxt-gtm": "^0.0.13",
     "date-fns": "^3.6.0",
     "eslint": "^9.18.0",
+    "eslint-plugin-oxlint": "^0.15.12",
     "eslint-plugin-tailwindcss": "^3.17.0",
     "eslint-plugin-vue": "^9.26.0",
     "husky": "^9.0.11",
@@ -60,6 +61,7 @@
     "nuxt-swiper": "^1.2.2",
     "nuxt-viewport": "^2.2.0",
     "openapi-client-axios": "^7.5.5",
+    "oxlint": "^0.15.12",
     "pinia": "^2.3.0",
     "pinia-plugin-persistedstate": "^4.1.1",
     "sass": "^1.77.4",
@@ -67,6 +69,11 @@
     "v-calendar": "^3.1.2",
     "vue-tsc": "^2.1.10",
     "zod": "^3.24.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "oxlint --fix && eslint . --fix"
+    ]
   },
   "resolutions": {
     "vue-tsc": "2.1.10"

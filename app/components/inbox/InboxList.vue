@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { format, isToday } from 'date-fns';
+
 import type { Mail } from '~/types';
 
 const props = defineProps({
@@ -43,8 +44,7 @@ defineShortcuts({
 
     if (index === -1) {
       selectedMail.value = props.mails[0];
-    }
-    else if (index < props.mails.length - 1) {
+    } else if (index < props.mails.length - 1) {
       selectedMail.value = props.mails[index + 1];
     }
   },
@@ -53,8 +53,7 @@ defineShortcuts({
 
     if (index === -1) {
       selectedMail.value = props.mails[props.mails.length - 1];
-    }
-    else if (index > 0) {
+    } else if (index > 0) {
       selectedMail.value = props.mails[index - 1];
     }
   },
@@ -69,10 +68,10 @@ defineShortcuts({
       :ref="el => { mailsRefs[mail.id] = el as Element }"
     >
       <div
-        class="p-4 text-sm cursor-pointer border-l-2"
+        class="cursor-pointer border-l-2 p-4 text-sm"
         :class="[
           mail.unread ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-300',
-          selectedMail && selectedMail.id === mail.id ? 'border-primary-500 dark:border-primary-400 bg-primary-100 dark:bg-primary-900/25' : 'border-white dark:border-gray-900 hover:border-primary-500/25 dark:hover:border-primary-400/25 hover:bg-primary-100/50 dark:hover:bg-primary-900/10',
+          selectedMail && selectedMail.id === mail.id ? 'border-primary-500 dark:border-primary-400 bg-primary-100 dark:bg-primary-900/25' : 'hover:border-primary-500/25 dark:hover:border-primary-400/25 hover:bg-primary-100/50 dark:hover:bg-primary-900/10 border-white dark:border-gray-900',
         ]"
         @click="selectedMail = mail"
       >
@@ -91,7 +90,7 @@ defineShortcuts({
         <p :class="[mail.unread && 'font-semibold']">
           {{ mail.subject }}
         </p>
-        <p class="text-gray-400 dark:text-gray-500 line-clamp-1">
+        <p class="line-clamp-1 text-gray-400 dark:text-gray-500">
           {{ mail.body }}
         </p>
       </div>

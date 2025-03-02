@@ -76,11 +76,7 @@ export default defineNuxtConfig({
 
   eslint: {
     config: {
-      stylistic: {
-        semi: true,
-        indent: 2,
-        quotes: 'single',
-      },
+      stylistic: false,
     },
   },
 
@@ -92,6 +88,7 @@ export default defineNuxtConfig({
   },
 
   pwa: {
+
     /* your pwa options */
   },
   // sentry: {
@@ -101,11 +98,11 @@ export default defineNuxtConfig({
 
   viewport: {
     breakpoints: {
-      'xs': 320,
-      'sm': 640,
-      'md': 768,
-      'lg': 1024,
-      'xl': 1280,
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
       '2xl': 1536,
     },
 

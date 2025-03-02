@@ -9,25 +9,27 @@ const items = computed(() => [
     label: '',
     disabled: true,
   }],
-  [{
-    label: 'Settings',
-    icon: 'i-heroicons-cog-8-tooth',
-    to: '/settings',
-  },
-  {
-    label: 'Command menu',
-    icon: 'i-heroicons-command-line',
-    shortcuts: [metaSymbol.value, 'K'],
-    click: () => {
-      isDashboardSearchModalOpen.value = true;
+  [
+    {
+      label: 'Settings',
+      icon: 'i-heroicons-cog-8-tooth',
+      to: '/settings',
     },
-  },
-  {
-    label: 'Help & Support',
-    icon: 'i-heroicons-question-mark-circle',
-    shortcuts: ['?'],
-    click: () => isHelpSlideoverOpen.value = true,
-  }],
+    {
+      label: 'Command menu',
+      icon: 'i-heroicons-command-line',
+      shortcuts: [metaSymbol.value, 'K'],
+      click: () => {
+        isDashboardSearchModalOpen.value = true;
+      },
+    },
+    {
+      label: 'Help & Support',
+      icon: 'i-heroicons-question-mark-circle',
+      shortcuts: ['?'],
+      click: () => isHelpSlideoverOpen.value = true,
+    },
+  ],
 ]);
 </script>
 
@@ -57,7 +59,7 @@ const items = computed(() => [
         <template #trailing>
           <UIcon
             name="i-heroicons-ellipsis-vertical"
-            class="w-5 h-5 ml-auto"
+            class="ml-auto size-5"
           />
         </template>
       </UButton>

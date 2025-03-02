@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { formatTimeAgo } from '@vueuse/core'
-import type { Notification } from '~/types'
+import { formatTimeAgo } from '@vueuse/core';
 
-const { isNotificationsSlideoverOpen } = useDashboard()
+import type { Notification } from '~/types';
 
-const { data: notifications } = await useFetch<Notification[]>('/api/notifications')
+const { isNotificationsSlideoverOpen } = useDashboard();
+
+const { data: notifications } = await useFetch<Notification[]>('/api/notifications');
 </script>
 
 <template>
@@ -16,7 +17,7 @@ const { data: notifications } = await useFetch<Notification[]>('/api/notificatio
       v-for="notification in notifications"
       :key="notification.id"
       :to="`/inbox?id=${notification.id}`"
-      class="p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800/50 cursor-pointer flex items-center gap-3 relative"
+      class="relative flex cursor-pointer items-center gap-3 rounded-md p-3 hover:bg-gray-50 dark:hover:bg-gray-800/50"
     >
       <UChip
         color="red"
@@ -30,13 +31,13 @@ const { data: notifications } = await useFetch<Notification[]>('/api/notificatio
         />
       </UChip>
 
-      <div class="text-sm flex-1">
+      <div class="flex-1 text-sm">
         <p class="flex items-center justify-between">
-          <span class="text-gray-900 dark:text-white font-medium">{{ notification.sender.name }}</span>
+          <span class="font-medium text-gray-900 dark:text-white">{{ notification.sender.name }}</span>
 
           <time
             :datetime="notification.date"
-            class="text-gray-500 dark:text-gray-400 text-xs"
+            class="text-xs text-gray-500 dark:text-gray-400"
             v-text="formatTimeAgo(new Date(notification.date))"
           />
         </p>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { z } from 'zod';
 import { useMutation } from '@tanstack/vue-query';
+import { z } from 'zod';
+
 import type { ApiV1AccessLoginLoginData } from '~/client';
 
 definePageMeta({
@@ -44,8 +45,7 @@ type Schema = z.output<typeof schema>;
 async function onSubmit(data: Schema) {
   try {
     await mutateAsync({ body: { username: data.email, password: data.password } });
-  }
-  catch {
+  } catch {
     // swallow error
   }
 }
@@ -54,7 +54,7 @@ const errorDetail = computed(() => error.value?.response?.data?.detail);
 </script>
 
 <template>
-  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+  <UCard class="w-full max-w-sm bg-white/75 backdrop-blur dark:bg-white/5">
     <UAuthForm
       :fields="fields"
       :schema="schema"
@@ -74,7 +74,7 @@ const errorDetail = computed(() => error.value?.response?.data?.detail);
 
         <div
           v-if="error && errorDetail"
-          class="text-red-500 dark:text-red-400 mt-2"
+          class="mt-2 text-red-500 dark:text-red-400"
         >
           {{ errorDetail }}
         </div>
