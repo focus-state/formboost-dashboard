@@ -13,12 +13,22 @@ useSeoMeta({
 });
 
 const { AccessService } = useApi();
+const { getTeams } = useTeamApi();
+const { teams } = storeToRefs(useTeamsStore());
+const { getProjects } = useProjectApi();
 
 const { isPending, error, mutateAsync } = useMutation({
   mutationFn: (data: Omit<ApiV1AccessLoginLoginData, 'url'>) => {
+    // TODO: update this to a composable function?
     return AccessService.apiV1AccessLoginLogin(data);
   },
   async onSuccess() {
+    await getTeams();
+
+    if (teams.value.length) {
+      await getProjects(teams.value[0].id);
+    }
+
     await navigateTo('/');
   },
 });

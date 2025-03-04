@@ -1,24 +1,22 @@
 <script setup lang="ts">
-const teams = [
-  {
-    label: 'Team #1',
-    avatar: {
-      src: 'https://avatars.githubusercontent.com/u/23360933?s=200&v=4',
-    },
+const teamsStore = useTeamsStore();
+const { activeTeam, teams } = storeToRefs(teamsStore);
+const { setActiveTeam } = teamsStore;
+
+const teamItems = computed(() => {
+  return teams.value.map((t) => ({
+    label: t.name,
     click: () => {
-      team.value = teams[0];
+      setActiveTeam(t);
     },
-  },
-  {
-    label: 'Team #2',
-    avatar: {
-      src: 'https://avatars.githubusercontent.com/u/62017400?s=200&v=4',
-    },
-    click: () => {
-      team.value = teams[1];
-    },
-  },
-];
+  }));
+});
+
+onMounted(() => {
+  if (teams.value.length) {
+    setActiveTeam(teams.value[0]);
+  }
+});
 
 const actions = [{
   label: 'Create team',
@@ -27,15 +25,14 @@ const actions = [{
   label: 'Manage teams',
   icon: 'i-heroicons-cog-8-tooth',
 }];
-
-const team = ref(teams[0]);
 </script>
 
 <template>
   <UDropdown
+    v-if="activeTeam"
     v-slot="{ open }"
     mode="hover"
-    :items="[teams, actions]"
+    :items="[teamItems, actions]"
     class="w-full"
     :ui="{ width: 'w-full' }"
     :popper="{ strategy: 'absolute' }"
@@ -47,11 +44,11 @@ const team = ref(teams[0]);
       class="w-full"
     >
       <UAvatar
-        :src="team.avatar.src"
         size="2xs"
+        :text="activeTeam.name[0]"
       />
 
-      <span class="truncate font-semibold text-gray-900 dark:text-white">{{ team.label }}</span>
+      <span class="truncate font-semibold text-gray-900 dark:text-white">{{ activeTeam.name }}</span>
     </UButton>
   </UDropdown>
 </template>
