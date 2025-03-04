@@ -77,81 +77,33 @@ const groups = [{
   }],
 }];
 
-const projects = [
-  {
-    id: 'proj1',
-    label: 'Project 1',
-    to: '/projects/1',
-    icon: 'i-heroicons-folder',
-    children: [
-      {
-        label: 'Form 1',
-        badge: '4',
-        to: '/projects/1/form/1',
-      },
-      {
-        label: 'Form 2',
-        to: '/projects/1/form/2',
-      },
-      {
-        label: 'Form 3',
-        to: '/projects/1/form/3',
-      },
-      {
-        label: 'Settings',
-        to: '/settings/notifications',
-        icon: 'i-heroicons-cog-8-tooth',
-      }],
-  },
-  {
-    id: 'proj2',
-    label: 'Project 2',
-    to: '/projects/1',
-    icon: 'i-heroicons-folder',
-    children: [
-      {
-        label: 'Form 1',
-        to: '/projects/1/form/1',
-      },
-      {
-        label: 'Form 2',
-        to: '/projects/1/form/2',
-      },
-      {
-        label: 'Form 3',
-        to: '/projects/1/form/3',
-      },
-      {
-        label: 'Settings',
-        to: '/settings/notifications',
-        icon: 'i-heroicons-cog-8-tooth',
-      }],
-  },
-  {
-    id: 'proj3',
-    label: 'Project 3',
-    to: '/projects/1',
-    icon: 'i-heroicons-folder',
-    children: [
-      {
-        label: 'Form 1',
-        to: '/projects/1/form/1',
-      },
-      {
-        label: 'Form 2',
-        to: '/projects/1/form/2',
-      },
-      {
-        label: 'Form 3',
-        to: '/projects/1/form/3',
-      },
-      {
-        label: 'Settings',
-        to: '/settings/notifications',
-        icon: 'i-heroicons-cog-8-tooth',
-      }],
-  },
-];
+const { projects: allProjects } = storeToRefs(useProjectsStore());
+const projects = computed(() => allProjects.value.map((p) => ({
+  id: p.id,
+  label: p.name,
+  to: `/projects/${p.id}`,
+  icon: 'i-heroicons-folder',
+  // TODO: get from API or require clicking into project (the latter is easiest, less busy)
+  // children: [
+  //   {
+  //     label: 'Form 1',
+  //     badge: '4',
+  //     to: `/projects/${p.id}/form/1`,
+  //   },
+  //   {
+  //     label: 'Form 2',
+  //     to: `/projects/${p.id}/form/2`,
+  //   },
+  //   {
+  //     label: 'Form 3',
+  //     to: `/projects/${p.id}/form/3`,
+  //   },
+  //   {
+  //     label: 'Settings',
+  //     to: '/settings/notifications',
+  //     icon: 'i-heroicons-cog-8-tooth',
+  //   }],
+})));
 </script>
 
 <template>
