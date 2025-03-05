@@ -2,7 +2,7 @@
 
 import { type Options, AccessService, UserAdminService, UserService, BillingService, DomainsService, FormsService, SubmissionsService, FormFieldsService, NotificationSettingsService, ProjectsService, UtilsService, TeamsService } from '../sdk.gen';
 import { queryOptions, type UseMutationOptions, type DefaultError } from '@tanstack/vue-query';
-import type { ApiV1AccessLoginLoginData, ApiV1AccessLoginLoginError, ApiV1AccessLoginLoginResponse, ApiV1AccessLogoutLogoutData, ApiV1AccessSignupSignupData, ApiV1AccessSignupSignupError, ApiV1AccessSignupSignupResponse, ApiV1UsersListUsersData, ApiV1UsersCreateUserData, ApiV1UsersCreateUserError, ApiV1UsersCreateUserResponse, ApiV1UsersUserIdDeleteUserData, ApiV1UsersUserIdDeleteUserError, ApiV1UsersUserIdDeleteUserResponse, ApiV1UsersUserIdGetUserData, ApiV1UsersUserIdUpdateUserData, ApiV1UsersUserIdUpdateUserError, ApiV1UsersUserIdUpdateUserResponse, ApiV1UsersMeProfileData, ApiV1BillingWebhookEventHandleEventData, ApiV1BillingWebhookEventHandleEventError, ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData, ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData, ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainError, ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainData, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainError, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainData, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainData, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainError, ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse, ApiV1fFormIdCreateSubmissionData, ApiV1fFormIdCreateSubmissionError, ApiV1fFormIdCreateSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsListProjectsData, ApiV1TeamsTeamIdProjectsCreateProjectData, ApiV1TeamsTeamIdProjectsCreateProjectError, ApiV1TeamsTeamIdProjectsCreateProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectData, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectError, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdGetProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectError, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectResponse, ApiV1HealthCheckHealthData, ApiV1TeamsListTeamsData, ApiV1TeamsCreateTeamData, ApiV1TeamsCreateTeamError, ApiV1TeamsCreateTeamResponse, ApiV1TeamsTeamIdDeleteTeamData, ApiV1TeamsTeamIdDeleteTeamError, ApiV1TeamsTeamIdDeleteTeamResponse, ApiV1TeamsTeamIdGetTeamData, ApiV1TeamsTeamIdUpdateTeamData, ApiV1TeamsTeamIdUpdateTeamError, ApiV1TeamsTeamIdUpdateTeamResponse, ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeData } from '../types.gen';
+import type { ApiV1AccessLoginLoginData, ApiV1AccessLoginLoginError, ApiV1AccessLoginLoginResponse, ApiV1AccessLogoutLogoutData, ApiV1AccessSignupSignupData, ApiV1AccessSignupSignupError, ApiV1AccessSignupSignupResponse, ApiV1UsersListUsersData, ApiV1UsersCreateUserData, ApiV1UsersCreateUserError, ApiV1UsersCreateUserResponse, ApiV1UsersUserIdDeleteUserData, ApiV1UsersUserIdDeleteUserError, ApiV1UsersUserIdDeleteUserResponse, ApiV1UsersUserIdGetUserData, ApiV1UsersUserIdUpdateUserData, ApiV1UsersUserIdUpdateUserError, ApiV1UsersUserIdUpdateUserResponse, ApiV1UsersMeProfileData, ApiV1BillingWebhookEventHandleEventData, ApiV1BillingWebhookEventHandleEventError, ApiV1TeamsTeamIdDomainsListDomainsData, ApiV1TeamsTeamIdDomainsCreateDomainData, ApiV1TeamsTeamIdDomainsCreateDomainError, ApiV1TeamsTeamIdDomainsCreateDomainResponse, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainData, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainError, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponse, ApiV1TeamsTeamIdDomainsDomainIdGetDomainData, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainData, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainError, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse, ApiV1fFormIdCreateSubmissionData, ApiV1fFormIdCreateSubmissionError, ApiV1fFormIdCreateSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsListProjectsData, ApiV1TeamsTeamIdProjectsCreateProjectData, ApiV1TeamsTeamIdProjectsCreateProjectError, ApiV1TeamsTeamIdProjectsCreateProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectData, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectError, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdGetProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectError, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectResponse, ApiV1HealthCheckHealthData, ApiV1TeamsListTeamsData, ApiV1TeamsCreateTeamData, ApiV1TeamsCreateTeamError, ApiV1TeamsCreateTeamResponse, ApiV1TeamsTeamIdDeleteTeamData, ApiV1TeamsTeamIdDeleteTeamError, ApiV1TeamsTeamIdDeleteTeamResponse, ApiV1TeamsTeamIdGetTeamData, ApiV1TeamsTeamIdUpdateTeamData, ApiV1TeamsTeamIdUpdateTeamError, ApiV1TeamsTeamIdUpdateTeamResponse, ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeData } from '../types.gen';
 import type { AxiosError } from 'axios';
 import { client as _heyApiClient } from '../client.gen';
 
@@ -271,12 +271,12 @@ export const apiV1BillingWebhookEventHandleEventMutation = (options?: Partial<Op
     return mutationOptions;
 };
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsQueryKey = (options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData>) => createQueryKey('apiV1TeamsTeamIdProjectsProjectIdDomainsListDomains', options);
+export const apiV1TeamsTeamIdDomainsListDomainsQueryKey = (options: Options<ApiV1TeamsTeamIdDomainsListDomainsData>) => createQueryKey('apiV1TeamsTeamIdDomainsListDomains', options);
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsOptions = (options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData>) => {
+export const apiV1TeamsTeamIdDomainsListDomainsOptions = (options: Options<ApiV1TeamsTeamIdDomainsListDomainsData>) => {
     return queryOptions({
         queryFn: async ({ queryKey, signal }) => {
-            const { data } = await DomainsService.apiV1TeamsTeamIdProjectsProjectIdDomainsListDomains({
+            const { data } = await DomainsService.apiV1TeamsTeamIdDomainsListDomains({
                 ...options,
                 ...queryKey[0],
                 signal,
@@ -284,16 +284,16 @@ export const apiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsOptions = (optio
             });
             return data;
         },
-        queryKey: apiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsQueryKey(options)
+        queryKey: apiV1TeamsTeamIdDomainsListDomainsQueryKey(options)
     });
 };
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainQueryKey = (options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData>) => createQueryKey('apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomain', options);
+export const apiV1TeamsTeamIdDomainsCreateDomainQueryKey = (options: Options<ApiV1TeamsTeamIdDomainsCreateDomainData>) => createQueryKey('apiV1TeamsTeamIdDomainsCreateDomain', options);
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainOptions = (options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData>) => {
+export const apiV1TeamsTeamIdDomainsCreateDomainOptions = (options: Options<ApiV1TeamsTeamIdDomainsCreateDomainData>) => {
     return queryOptions({
         queryFn: async ({ queryKey, signal }) => {
-            const { data } = await DomainsService.apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomain({
+            const { data } = await DomainsService.apiV1TeamsTeamIdDomainsCreateDomain({
                 ...options,
                 ...queryKey[0],
                 signal,
@@ -301,14 +301,14 @@ export const apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainOptions = (opti
             });
             return data;
         },
-        queryKey: apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainQueryKey(options)
+        queryKey: apiV1TeamsTeamIdDomainsCreateDomainQueryKey(options)
     });
 };
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainMutation = (options?: Partial<Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData>>) => {
-    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponse, AxiosError<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainError>, Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData>> = {
+export const apiV1TeamsTeamIdDomainsCreateDomainMutation = (options?: Partial<Options<ApiV1TeamsTeamIdDomainsCreateDomainData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdDomainsCreateDomainResponse, AxiosError<ApiV1TeamsTeamIdDomainsCreateDomainError>, Options<ApiV1TeamsTeamIdDomainsCreateDomainData>> = {
         mutationFn: async (localOptions) => {
-            const { data } = await DomainsService.apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomain({
+            const { data } = await DomainsService.apiV1TeamsTeamIdDomainsCreateDomain({
                 ...options,
                 ...localOptions,
                 throwOnError: true
@@ -319,10 +319,10 @@ export const apiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainMutation = (opt
     return mutationOptions;
 };
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainMutation = (options?: Partial<Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainData>>) => {
-    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponse, AxiosError<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainError>, Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainData>> = {
+export const apiV1TeamsTeamIdDomainsDomainIdDeleteDomainMutation = (options?: Partial<Options<ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponse, AxiosError<ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainError>, Options<ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainData>> = {
         mutationFn: async (localOptions) => {
-            const { data } = await DomainsService.apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomain({
+            const { data } = await DomainsService.apiV1TeamsTeamIdDomainsDomainIdDeleteDomain({
                 ...options,
                 ...localOptions,
                 throwOnError: true
@@ -333,12 +333,12 @@ export const apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainMutatio
     return mutationOptions;
 };
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainQueryKey = (options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainData>) => createQueryKey('apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomain', options);
+export const apiV1TeamsTeamIdDomainsDomainIdGetDomainQueryKey = (options: Options<ApiV1TeamsTeamIdDomainsDomainIdGetDomainData>) => createQueryKey('apiV1TeamsTeamIdDomainsDomainIdGetDomain', options);
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainOptions = (options: Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainData>) => {
+export const apiV1TeamsTeamIdDomainsDomainIdGetDomainOptions = (options: Options<ApiV1TeamsTeamIdDomainsDomainIdGetDomainData>) => {
     return queryOptions({
         queryFn: async ({ queryKey, signal }) => {
-            const { data } = await DomainsService.apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomain({
+            const { data } = await DomainsService.apiV1TeamsTeamIdDomainsDomainIdGetDomain({
                 ...options,
                 ...queryKey[0],
                 signal,
@@ -346,14 +346,14 @@ export const apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainOptions = 
             });
             return data;
         },
-        queryKey: apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainQueryKey(options)
+        queryKey: apiV1TeamsTeamIdDomainsDomainIdGetDomainQueryKey(options)
     });
 };
 
-export const apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainMutation = (options?: Partial<Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainData>>) => {
-    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponse, AxiosError<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainError>, Options<ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainData>> = {
+export const apiV1TeamsTeamIdDomainsDomainIdUpdateDomainMutation = (options?: Partial<Options<ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponse, AxiosError<ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainError>, Options<ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainData>> = {
         mutationFn: async (localOptions) => {
-            const { data } = await DomainsService.apiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomain({
+            const { data } = await DomainsService.apiV1TeamsTeamIdDomainsDomainIdUpdateDomain({
                 ...options,
                 ...localOptions,
                 throwOnError: true
