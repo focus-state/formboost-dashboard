@@ -871,14 +871,14 @@
                 "deprecated": false
             }
         },
-        "/api/v1/teams/{team_id}/projects/{project_id}/domains": {
+        "/api/v1/teams/{team_id}/domains": {
             "get": {
                 "tags": [
                     "domains"
                 ],
                 "summary": "ListDomains",
                 "description": "List domains.",
-                "operationId": "ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomains",
+                "operationId": "ApiV1TeamsTeamIdDomainsListDomains",
                 "parameters": [
                     {
                         "name": "createdBefore",
@@ -1110,16 +1110,6 @@
                         },
                         "required": true,
                         "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
                     }
                 ],
                 "responses": {
@@ -1201,7 +1191,7 @@
                 ],
                 "summary": "CreateDomain",
                 "description": "Create a new domain.",
-                "operationId": "ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomain",
+                "operationId": "ApiV1TeamsTeamIdDomainsCreateDomain",
                 "parameters": [
                     {
                         "name": "team_id",
@@ -1215,13 +1205,15 @@
                     },
                     {
                         "name": "project_id",
-                        "in": "path",
+                        "in": "query",
                         "schema": {
                             "type": "string",
                             "format": "uuid"
                         },
                         "required": true,
-                        "deprecated": false
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
                     }
                 ],
                 "requestBody": {
@@ -1288,27 +1280,17 @@
                 "deprecated": false
             }
         },
-        "/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}": {
+        "/api/v1/teams/{team_id}/domains/{domain_id}": {
             "get": {
                 "tags": [
                     "domains"
                 ],
                 "summary": "GetDomain",
                 "description": "Get details about a domain.",
-                "operationId": "ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomain",
+                "operationId": "ApiV1TeamsTeamIdDomainsDomainIdGetDomain",
                 "parameters": [
                     {
                         "name": "domain_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -1387,20 +1369,10 @@
                 ],
                 "summary": "DeleteDomain",
                 "description": "Delete a domain.",
-                "operationId": "ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomain",
+                "operationId": "ApiV1TeamsTeamIdDomainsDomainIdDeleteDomain",
                 "parameters": [
                     {
                         "name": "domain_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -1472,20 +1444,10 @@
                 ],
                 "summary": "UpdateDomain",
                 "description": "Update a domain.",
-                "operationId": "ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomain",
+                "operationId": "ApiV1TeamsTeamIdDomainsDomainIdUpdateDomain",
                 "parameters": [
                     {
                         "name": "domain_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2006,7 +1968,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2016,7 +1978,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2098,7 +2060,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2108,7 +2070,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2183,7 +2145,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2193,7 +2155,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2304,14 +2266,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "oneOf": [
-                                        {
-                                            "$ref": "#/components/schemas/Submission"
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ]
+                                    "$ref": "#/components/schemas/SubmissionCreateResponseSchema"
                                 }
                             }
                         }
@@ -2378,7 +2333,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2388,7 +2343,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2480,7 +2435,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2490,7 +2445,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2586,7 +2541,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2596,7 +2551,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2938,7 +2893,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2948,7 +2903,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3273,7 +3228,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3283,7 +3238,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3489,7 +3444,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3499,7 +3454,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3591,7 +3546,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3601,7 +3556,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3686,7 +3641,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3696,7 +3651,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4021,7 +3976,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4031,7 +3986,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4120,7 +4075,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4130,7 +4085,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4224,7 +4179,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4234,7 +4189,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4326,7 +4281,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4336,7 +4291,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4421,7 +4376,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4431,7 +4386,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -6301,6 +6256,10 @@
                                 "type": "null"
                             }
                         ]
+                    },
+                    "isActive": {
+                        "type": "boolean",
+                        "default": true
                     }
                 },
                 "type": "object",
@@ -6612,6 +6571,10 @@
                                 "type": "null"
                             }
                         ]
+                    },
+                    "isActive": {
+                        "type": "boolean",
+                        "default": true
                     }
                 },
                 "type": "object",
@@ -6783,6 +6746,16 @@
                                     "$ref": "#/components/schemas/FormFieldAcceptableFileTypes"
                                 },
                                 "type": "array"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "isActive": {
+                        "oneOf": [
+                            {
+                                "type": "boolean"
                             },
                             {
                                 "type": "null"
@@ -7349,7 +7322,7 @@
                     },
                     "values": {
                         "items": {
-                            "$ref": "#/components/schemas/SubmissionValue"
+                            "$ref": "#/components/schemas/SubmissionValueWithFormFieldData"
                         },
                         "type": "array"
                     }
@@ -7375,7 +7348,45 @@
                 ],
                 "title": "SubmissionCreate"
             },
+            "SubmissionCreateResponseSchema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "isSpam": {
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "items": {
+                            "$ref": "#/components/schemas/SubmissionValue"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "isSpam",
+                    "values"
+                ],
+                "title": "SubmissionCreateResponseSchema"
+            },
             "SubmissionValue": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "value": {}
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "title": "SubmissionValue"
+            },
+            "SubmissionValueWithFormFieldData": {
                 "properties": {
                     "id": {
                         "type": "string",
@@ -7420,7 +7431,7 @@
                 "required": [
                     "id"
                 ],
-                "title": "SubmissionValue"
+                "title": "SubmissionValueWithFormFieldData"
             },
             "Team": {
                 "properties": {

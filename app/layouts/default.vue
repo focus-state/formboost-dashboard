@@ -38,6 +38,11 @@ const links = [
     id: 'domains',
     label: 'Domains',
     icon: 'i-heroicons-user-group',
+    to: '/domains',
+    tooltip: {
+      text: 'Domains',
+      shortcuts: ['G', 'D'],
+    },
   },
 ];
 
