@@ -46,7 +46,7 @@ async function onChange() {
 </script>
 
 <template>
-  <UDashboardPanelContent class="p-0 pb-24 divide-y divide-gray-200 dark:divide-gray-800">
+  <UDashboardPanelContent class="divide-y divide-gray-200 p-0 pb-24 dark:divide-gray-800">
     <UDashboardSection
       v-for="(section, index) in sections"
       :key="index"
@@ -62,7 +62,7 @@ async function onChange() {
           :name="field.name"
           :label="field.label"
           :description="field.description"
-          class="flex items-center justify-between pt-4 first:pt-0 gap-2"
+          class="flex items-center justify-between gap-2 pt-4 first:pt-0"
           :ui="{ container: 'flex' }"
         >
           <UToggle

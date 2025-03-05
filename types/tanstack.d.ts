@@ -2,7 +2,7 @@ import '@tanstack/vue-query';
 import type { AxiosError } from 'axios';
 
 interface ApiError {
-  status_code: number;
+  statusCode: number;
   detail: string;
 }
 

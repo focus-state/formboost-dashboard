@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useBreakpoints, breakpointsTailwind } from '@vueuse/core';
+import 'v-calendar/dist/style.css';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 import { DatePicker as VCalendarDatePicker } from 'v-calendar';
 // @ts-expect-error - no types available
 import type { DatePickerDate, DatePickerRangeObject } from 'v-calendar/dist/types/src/use/datePicker';
-import 'v-calendar/dist/style.css';
 
 defineOptions({
   inheritAttrs: false,
@@ -31,9 +31,9 @@ const breakpoints = useBreakpoints(breakpointsTailwind);
 const smallerThanSm = breakpoints.smaller('sm');
 
 const attrs = {
-  'transparent': true,
-  'borderless': true,
-  'color': 'primary',
+  transparent: true,
+  borderless: true,
+  color: 'primary',
   'is-dark': { selector: 'html', darkClass: 'dark' },
   'first-day-of-week': 2,
 };

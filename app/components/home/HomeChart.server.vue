@@ -5,10 +5,10 @@
   >
     <template #header>
       <div>
-        <p class="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">
+        <p class="mb-1 text-sm font-medium text-gray-500 dark:text-gray-400">
           Revenue
         </p>
-        <p class="text-3xl text-gray-900 dark:text-white font-semibold">
+        <p class="text-3xl font-semibold text-gray-900 dark:text-white">
           ---
         </p>
       </div>

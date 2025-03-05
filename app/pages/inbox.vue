@@ -178,11 +178,11 @@ watch(filteredMails, () => {
       </template>
       <div
         v-else
-        class="flex-1 hidden lg:flex items-center justify-center"
+        class="hidden flex-1 items-center justify-center lg:flex"
       >
         <UIcon
           name="i-heroicons-inbox"
-          class="w-32 h-32 text-gray-400 dark:text-gray-500"
+          class="size-32 text-gray-400 dark:text-gray-500"
         />
       </div>
     </UDashboardPanel>

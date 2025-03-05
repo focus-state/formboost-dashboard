@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { z } from 'zod';
+
 import type { FormSubmitEvent } from '#ui/types';
 
 definePageMeta({
@@ -38,7 +39,7 @@ const schema = z.object({
   password: z.string().optional(),
   password2: z.string().min(8).optional(),
 }).refine(data => (data.password && !data.password2) || (!data.password && data.password2), {
-  message: `Passwords don't match.`, path: ['password2'],
+  message: 'Passwords don\'t match.', path: ['password2'],
 });
 
 type Schema = z.output<typeof schema>;
@@ -49,7 +50,7 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+  <UCard class="w-full max-w-sm bg-white/75 backdrop-blur dark:bg-white/5">
     <UAuthForm
       :fields="fields"
       :schema="schema"
