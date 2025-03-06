@@ -14,3 +14,7 @@ export const useDomainsStore = defineStore('domains', () => {
     setDomains,
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useDomainsStore, import.meta.hot));
+}

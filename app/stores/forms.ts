@@ -9,3 +9,7 @@ export const useFormsStore = defineStore('forms', () => {
     forms,
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useFormsStore, import.meta.hot));
+}

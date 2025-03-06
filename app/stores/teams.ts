@@ -22,3 +22,7 @@ export const useTeamsStore = defineStore('teams', () => {
     setActiveTeam,
   };
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useTeamsStore, import.meta.hot));
+}
