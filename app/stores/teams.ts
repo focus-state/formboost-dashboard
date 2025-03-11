@@ -14,12 +14,19 @@ export const useTeamsStore = defineStore('teams', () => {
     activeTeam.value = value;
   };
 
+  const reset = () => {
+    teams.value = [];
+    activeTeam.value = null;
+  };
+
   return {
     teams,
     setTeams,
 
     activeTeam,
     setActiveTeam,
+
+    reset,
   };
 });
 

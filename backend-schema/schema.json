@@ -4,7 +4,7 @@
         "version": "1.0.0",
         "contact": {
             "name": "Administrator",
-            "email": "admin@formboost.com"
+            "email": "admin@formboost.io"
         }
     },
     "openapi": "3.1.0",
@@ -176,6 +176,30 @@
                                             "extra": {}
                                         }
                                     ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/access/test-token": {
+            "post": {
+                "tags": [
+                    "access"
+                ],
+                "summary": "TestToken",
+                "description": "Authenticate a user.",
+                "operationId": "ApiV1AccessTestTokenTestToken",
+                "responses": {
+                    "201": {
+                        "description": "Document created, URL follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
                                 }
                             }
                         }
@@ -398,8 +422,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -1085,8 +1109,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -1202,18 +1226,6 @@
                         },
                         "required": true,
                         "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
-                        "in": "query",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false,
-                        "allowEmptyValue": false,
-                        "allowReserved": false
                     }
                 ],
                 "requestBody": {
@@ -1745,8 +1757,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -2343,7 +2355,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2353,7 +2365,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2445,7 +2457,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2455,7 +2467,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2866,8 +2878,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -3201,8 +3213,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -3454,7 +3466,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3464,7 +3476,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3556,7 +3568,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3566,7 +3578,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3651,7 +3663,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3661,7 +3673,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3949,8 +3961,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -4189,7 +4201,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4199,7 +4211,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4291,7 +4303,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4301,7 +4313,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4386,7 +4398,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4396,7 +4408,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4684,8 +4696,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -5356,8 +5368,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -5769,6 +5781,795 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/teams/{team_id}/invitations": {
+            "get": {
+                "tags": [
+                    "team invitations"
+                ],
+                "summary": "GetTeamInvitations",
+                "description": "Get details about a team.",
+                "operationId": "ApiV1TeamsTeamIdInvitationsGetTeamInvitations",
+                "parameters": [
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "createdBefore",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "createdAfter",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "updatedBefore",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "updatedAfter",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "type": "array"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1.0,
+                            "default": 1
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1.0,
+                            "default": 20
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchField",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Field to search"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchString",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Field to search"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchIgnoreCase",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Search should be case sensitive"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Order by field"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "enum": [
+                                "asc",
+                                "desc",
+                                null
+                            ],
+                            "title": "Field to search",
+                            "default": "desc"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "items": {
+                                            "items": {
+                                                "$ref": "#/components/schemas/TeamInvitation"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "limit": {
+                                            "type": "integer",
+                                            "description": "Maximal number of items to send."
+                                        },
+                                        "offset": {
+                                            "type": "integer",
+                                            "description": "Offset from the beginning of the query."
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "description": "Total number of items."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "tags": [
+                    "team invitations"
+                ],
+                "summary": "InviteMemberToTeam",
+                "description": "Add a member to a team.",
+                "operationId": "ApiV1TeamsTeamIdInvitationsInviteMemberToTeam",
+                "parameters": [
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TeamInvitationCreate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Document created, URL follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TeamInvitation"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/teams/{team_id}/members": {
+            "get": {
+                "tags": [
+                    "Team Members"
+                ],
+                "summary": "GetTeamMembers",
+                "description": "Get details about a team.",
+                "operationId": "ApiV1TeamsTeamIdMembersGetTeamMembers",
+                "parameters": [
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "createdBefore",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "createdAfter",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "updatedBefore",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "updatedAfter",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "type": "array"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1.0,
+                            "default": 1
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1.0,
+                            "default": 20
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchField",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Field to search"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchString",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Field to search"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchIgnoreCase",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Search should be case sensitive"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Order by field"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "schema": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "enum": [
+                                "asc",
+                                "desc",
+                                null
+                            ],
+                            "title": "Field to search",
+                            "default": "desc"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "items": {
+                                            "items": {
+                                                "$ref": "#/components/schemas/TeamMembership"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "limit": {
+                                            "type": "integer",
+                                            "description": "Maximal number of items to send."
+                                        },
+                                        "offset": {
+                                            "type": "integer",
+                                            "description": "Offset from the beginning of the query."
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "description": "Total number of items."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/teams/{team_id}/members/{membership_id}": {
+            "delete": {
+                "tags": [
+                    "Team Members"
+                ],
+                "summary": "RemoveMemberFromTeam",
+                "description": "Revoke a members access to a team.",
+                "operationId": "ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeam",
+                "parameters": [
+                    {
+                        "name": "membership_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Request fulfilled, nothing follows",
+                        "headers": {}
                     },
                     "400": {
                         "description": "Bad request syntax or unsupported method",
@@ -7520,6 +8321,104 @@
                     "name"
                 ],
                 "title": "TeamCreate"
+            },
+            "TeamInvitation": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "teamRole": {
+                        "$ref": "#/components/schemas/TeamRole"
+                    },
+                    "isAccepted": {
+                        "type": "boolean",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "title": "TeamInvitation"
+            },
+            "TeamInvitationCreate": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "teamRole": {
+                        "$ref": "#/components/schemas/TeamRole"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "title": "TeamInvitationCreate"
+            },
+            "TeamMembership": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "email": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "format": "email"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "name": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "teamRole": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/TeamRole"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": "member"
+                    },
+                    "isOwner": {
+                        "oneOf": [
+                            {
+                                "type": "boolean",
+                                "default": false
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "userId"
+                ],
+                "title": "TeamMembership"
             },
             "TeamRole": {
                 "type": "string",

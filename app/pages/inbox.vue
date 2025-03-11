@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { Mail } from '~/types';
 
+definePageMeta({  middleware: ['logged-in'] });
+useSeoMeta({ title: 'Inbox' });
+
 const tabItems = [{
   label: 'All',
 }, {

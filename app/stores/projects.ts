@@ -9,9 +9,15 @@ export const useProjectsStore = defineStore('projects', () => {
     projects.value = value;
   };
 
+  const reset = () => {
+    projects.value = [];
+  };
+
   return {
     projects,
     setProjects,
+
+    reset,
   };
 });
 

@@ -3,6 +3,9 @@ import { useQuery } from '@tanstack/vue-query';
 
 import type { ApiV1TeamsTeamIdDomainsListDomainsData, Domain  } from '~/client';
 
+definePageMeta({ middleware: ['logged-in'] });
+useSeoMeta({ title: 'Domains' });
+
 const defaultColumns = [{
   key: 'name',
   label: 'Name',

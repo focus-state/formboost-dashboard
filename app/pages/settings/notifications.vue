@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({ middleware: ['logged-in'] });
+useSeoMeta({ title: 'Notifications' });
+
 const state = reactive<{ [key: string]: boolean }>({
   email: true,
   desktop: false,

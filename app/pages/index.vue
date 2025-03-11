@@ -3,6 +3,9 @@ import { sub } from 'date-fns';
 
 import type { Period, Range } from '~/types';
 
+definePageMeta({ middleware: ['logged-in'] });
+useSeoMeta({ title: 'Dashboard' });
+
 const { isNotificationsSlideoverOpen } = useDashboard();
 
 const _items = [[

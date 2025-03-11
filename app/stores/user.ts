@@ -9,9 +9,15 @@ export const useUserStore = defineStore('user', () => {
     user.value = value;
   };
 
+  const reset = () => {
+    user.value = null;
+  };
+
   return {
     user,
     setUser,
+
+    reset,
   };
 });
 

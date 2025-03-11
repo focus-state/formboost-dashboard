@@ -4,13 +4,8 @@ import { z } from 'zod';
 
 import type { ApiV1AccessLoginLoginData } from '~/client';
 
-definePageMeta({
-  layout: 'auth',
-});
-
-useSeoMeta({
-  title: 'Login',
-});
+definePageMeta({ layout: 'auth' });
+useSeoMeta({ title: 'Login' });
 
 const { logIn } = useAuthApi();
 const { getTeams } = useTeamApi();

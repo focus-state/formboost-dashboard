@@ -28,8 +28,20 @@ export const useAuthApi = () => {
     }
   };
 
+  const testToken = async () => {
+    try {
+      await AccessService.apiV1AccessTestTokenTestToken();
+
+      setLoggedIn(true);
+    } catch {
+      // swallow error, clearing the store (including auth) is handled by
+      // interceptor
+    }
+  };
+
   return {
     logIn,
     logOut,
+    testToken,
   };
 };

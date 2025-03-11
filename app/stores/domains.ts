@@ -9,9 +9,15 @@ export const useDomainsStore = defineStore('domains', () => {
     domains.value = value;
   };
 
+  const reset = () => {
+    domains.value = [];
+  };
+
   return {
     domains,
     setDomains,
+
+    reset,
   };
 });
 
