@@ -3,13 +3,8 @@ import { z } from 'zod';
 
 import type { FormSubmitEvent } from '#ui/types';
 
-definePageMeta({
-  layout: 'auth',
-});
-
-useSeoMeta({
-  title: 'Sign up',
-});
+definePageMeta({ layout: 'auth' });
+useSeoMeta({ title: 'Sign up' });
 
 const fields = [{
   name: 'name',

@@ -1,7 +1,37 @@
 <script setup lang="ts">
+import { useMutation } from '@tanstack/vue-query';
+
 const { isHelpSlideoverOpen } = useDashboard();
 const { isDashboardSearchModalOpen } = useUIState();
 const { metaSymbol } = useShortcuts();
+
+const { user } = useUserStore();
+
+const splitName = computed(() => user?.name?.split(' '));
+const avatarText = computed(() => {
+  if (!splitName.value) {
+    return null;
+  }
+
+  if (splitName.value.length >= 2) {
+    return `${splitName.value[0].charAt(0)}${splitName.value[1].charAt(0)}`;
+  } else if (splitName.value.length === 1) {
+    return splitName.value[0].charAt(0);
+  } else {
+    return null;
+  }
+});
+
+const { logOut: logOutFunc } = useAuthApi();
+
+const { mutateAsync: logOut } = useMutation({
+  mutationFn: () => {
+    return logOutFunc();
+  },
+  async onSuccess() {
+    await navigateTo('/login');
+  },
+});
 
 const items = computed(() => [
   [{
@@ -29,6 +59,11 @@ const items = computed(() => [
       shortcuts: ['?'],
       click: () => isHelpSlideoverOpen.value = true,
     },
+    {
+      label: 'Log out',
+      icon: 'i-heroicons-arrow-right-start-on-rectangle-solid',
+      click: logOut,
+    },
   ],
 ]);
 </script>
@@ -46,12 +81,16 @@ const items = computed(() => [
         color="gray"
         variant="ghost"
         class="w-full"
-        label="User Name"
+        :label="user?.name || 'User'"
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
       >
-        <template #leading>
+        <template
+          v-if="avatarText"
+          #leading
+        >
+          <!-- TODO: use actual avatar (not currently supported) -->
           <UAvatar
-            src="https://avatars.githubusercontent.com/u/739984?v=4"
+            :text="avatarText"
             size="2xs"
           />
         </template>
@@ -70,8 +109,11 @@ const items = computed(() => [
         <p>
           Signed in as
         </p>
-        <p class="truncate font-medium text-gray-900 dark:text-white">
-          user@user.com
+        <p
+          v-if="user?.email"
+          class="truncate font-medium text-gray-900 dark:text-white"
+        >
+          {{  user.email }}
         </p>
       </div>
     </template>

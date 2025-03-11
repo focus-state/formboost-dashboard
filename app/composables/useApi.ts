@@ -23,12 +23,6 @@ export const useApi = () => {
       const { resetProtectedStores } = useMainStore();
 
       resetProtectedStores();
-
-      const route = useRoute();
-
-      if (route.path !== '/login') {
-        await navigateTo({ path: '/login', query: { next: route.fullPath } });
-      }
     }
 
     return Promise.reject(error);

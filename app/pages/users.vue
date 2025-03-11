@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { User } from '~/types';
 
+definePageMeta({ middleware: ['logged-in'] });
+useSeoMeta({ title: 'Users' });
+
 const defaultColumns = [{
   key: 'id',
   label: '#',

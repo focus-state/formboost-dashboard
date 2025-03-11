@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({ middleware: ['logged-in'] });
+useSeoMeta({ title: 'Settings' });
+
 const links = [[{
   label: 'General',
   icon: 'i-heroicons-user-circle',

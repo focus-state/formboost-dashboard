@@ -9,6 +9,11 @@ export const useMainStore = defineStore('Main', () => {
   const resetProtectedStores = () => {
     [
       useAuthStore(),
+      useDomainsStore(),
+      useFormsStore(),
+      useProjectsStore(),
+      useTeamsStore(),
+      useUserStore(),
     ].forEach(store => store.reset());
   };
 

@@ -74,6 +74,7 @@ export type FormField = {
     maxItems?: number | null;
     maxFileUploadSize?: number | null;
     acceptableFileTypes?: Array<FormFieldAcceptableFileTypes> | null;
+    isActive?: boolean;
 };
 
 export type FormFieldAccept = 'text/plain' | '.txt' | 'image/vnd.dwg' | '.dwg' | 'image/x-xcf' | '.xcf' | 'image/jpeg' | '.jpg' | 'image/jpx' | '.jpx' | 'image/apng' | '.apng' | 'image/png' | '.png' | 'image/gif' | '.gif' | 'image/webp' | '.webp' | 'image/tiff' | '.tif' | 'image/x-canon-cr2' | '.cr_2' | 'image/bmp' | '.bmp' | 'image/vnd.ms-photo' | '.jxr' | 'image/vnd.adobe.photoshop' | '.psd' | 'image/x-icon' | '.ico' | 'image/heic' | '.heic' | 'application/dicom' | '.dcm' | 'image/avif' | '.avif' | 'audio/aac' | '.aac' | 'audio/midi' | '.midi' | 'audio/mpeg' | '.mp_3' | 'audio/mp4' | '.m_4_a' | 'audio/ogg' | '.ogg' | 'audio/x-flac' | '.flac' | 'audio/x-wav' | '.wav' | 'audio/amr' | '.amr' | 'audio/x-aiff' | '.aiff' | 'video/3gpp' | '.3_gp' | 'video/mp4' | '.mp_4' | 'video/x-m4v' | '.m_4_v' | 'video/x-matroska' | '.mkv' | 'video/quicktime' | '.mov' | 'video/x-msvideo' | '.avi' | 'video/x-ms-wmv' | '.wmv' | 'video/mpeg' | '.mpg' | 'video/webm' | '.webm' | 'video/x-flv' | '.flv' | 'application/font-woff' | '.woff' | '.woff_2' | 'application/font-sfnt' | '.ttf' | '.otf' | 'application/msword' | '.doc' | 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' | '.docx' | 'application/vnd.oasis.opendocument.text' | '.odt' | 'application/vnd.ms-excel' | '.xls' | 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' | '.xlsx' | 'application/vnd.oasis.opendocument.spreadsheet' | '.ods' | 'application/vnd.ms-powerpoint' | '.ppt' | 'application/vnd.openxmlformats-officedocument.presentationml.presentation' | '.pptx' | 'application/vnd.oasis.opendocument.presentation' | '.odp' | 'application/x-brotli' | '.br' | 'application/x-rpm' | '.rpm' | 'application/epub+zip' | '.epub' | 'application/zip' | '.zip' | 'application/x-tar' | '.tar' | 'application/x-rar-compressed' | '.rar' | 'application/gzip' | '.gz' | 'application/x-bzip2' | '.bz_2' | 'application/x-7z-compressed' | '.7_z' | 'application/pdf' | '.pdf' | 'application/x-msdownload' | '.exe' | 'application/x-shockwave-flash' | '.swf' | 'application/rtf' | '.rtf' | 'application/x-nintendo-nes-rom' | '.nes' | 'application/x-google-chrome-extension' | '.crx' | 'application/vnd.ms-cab-compressed' | '.cab' | 'application/octet-stream' | '.eot' | 'application/postscript' | '.ps' | 'application/x-xz' | '.xz' | 'application/x-sqlite3' | '.sqlite' | 'application/x-deb' | '.deb' | 'application/x-unix-archive' | '.ar' | 'application/x-compress' | '.z' | 'application/x-lzop' | '.lzo' | 'application/x-lzip' | '.lz' | 'application/x-executable' | '.elf' | 'application/x-lz4' | '.lz_4' | 'application/zstd' | '.zst' | 'application/wasm' | '.wasm';
@@ -96,6 +97,7 @@ export type FormFieldCreate = {
     maxItems?: number | null;
     maxFileUploadSize?: number | null;
     acceptableFileTypes?: Array<FormFieldAcceptableFileTypes> | null;
+    isActive?: boolean;
 };
 
 export type FormFieldUpdate = {
@@ -115,6 +117,7 @@ export type FormFieldUpdate = {
     maxItems?: number | null;
     maxFileUploadSize?: number | null;
     acceptableFileTypes?: Array<FormFieldAcceptableFileTypes> | null;
+    isActive?: boolean | null;
 };
 
 export type FormUpdate = {
@@ -191,14 +194,25 @@ export type StripeSubscriptionStatus = 'incomplete' | 'incomplete_expired' | 'tr
 export type Submission = {
     id: string;
     isSpam: boolean;
-    values: Array<SubmissionValue>;
+    values: Array<SubmissionValueWithFormFieldData>;
 };
 
 export type SubmissionCreate = {
     data: {};
 };
 
+export type SubmissionCreateResponseSchema = {
+    id: string;
+    isSpam: boolean;
+    values: Array<SubmissionValue>;
+};
+
 export type SubmissionValue = {
+    id: string;
+    value?: unknown;
+};
+
+export type SubmissionValueWithFormFieldData = {
     id: string;
     value?: unknown;
     formFieldId?: string | null;
@@ -221,6 +235,26 @@ export type TeamCreate = {
     name: string;
     description?: string | null;
     slug?: string | null;
+};
+
+export type TeamInvitation = {
+    email: string;
+    teamRole?: TeamRole;
+    isAccepted?: boolean;
+};
+
+export type TeamInvitationCreate = {
+    email: string;
+    teamRole?: TeamRole;
+};
+
+export type TeamMembership = {
+    id: string;
+    userId: string;
+    email?: string | null;
+    name?: string | null;
+    teamRole?: TeamRole | null;
+    isOwner?: boolean | null;
 };
 
 /**
@@ -356,6 +390,22 @@ export type ApiV1AccessSignupSignupResponses = {
 };
 
 export type ApiV1AccessSignupSignupResponse = ApiV1AccessSignupSignupResponses[keyof ApiV1AccessSignupSignupResponses];
+
+export type ApiV1AccessTestTokenTestTokenData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/access/test-token';
+};
+
+export type ApiV1AccessTestTokenTestTokenResponses = {
+    /**
+     * Document created, URL follows
+     */
+    201: User;
+};
+
+export type ApiV1AccessTestTokenTestTokenResponse = ApiV1AccessTestTokenTestTokenResponses[keyof ApiV1AccessTestTokenTestTokenResponses];
 
 export type ApiV1UsersListUsersData = {
     body?: never;
@@ -578,11 +628,10 @@ export type ApiV1BillingWebhookEventHandleEventResponses = {
     201: unknown;
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData = {
+export type ApiV1TeamsTeamIdDomainsListDomainsData = {
     body?: never;
     path: {
         team_id: string;
-        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -598,10 +647,10 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsData = {
         orderBy?: string | null;
         sortOrder?: 'asc' | 'desc' | null;
     };
-    url: '/api/v1/teams/{team_id}/projects/{project_id}/domains';
+    url: '/api/v1/teams/{team_id}/domains';
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsErrors = {
+export type ApiV1TeamsTeamIdDomainsListDomainsErrors = {
     /**
      * Validation Exception
      */
@@ -612,9 +661,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsErrors = {
     };
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsError = ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsErrors[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsErrors];
+export type ApiV1TeamsTeamIdDomainsListDomainsError = ApiV1TeamsTeamIdDomainsListDomainsErrors[keyof ApiV1TeamsTeamIdDomainsListDomainsErrors];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponses = {
+export type ApiV1TeamsTeamIdDomainsListDomainsResponses = {
     /**
      * Request fulfilled, document follows
      */
@@ -635,19 +684,18 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponses = {
     };
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponse = ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsListDomainsResponses];
+export type ApiV1TeamsTeamIdDomainsListDomainsResponse = ApiV1TeamsTeamIdDomainsListDomainsResponses[keyof ApiV1TeamsTeamIdDomainsListDomainsResponses];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainData = {
+export type ApiV1TeamsTeamIdDomainsCreateDomainData = {
     body: DomainCreate;
     path: {
         team_id: string;
-        project_id: string;
     };
     query?: never;
-    url: '/api/v1/teams/{team_id}/projects/{project_id}/domains';
+    url: '/api/v1/teams/{team_id}/domains';
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainErrors = {
+export type ApiV1TeamsTeamIdDomainsCreateDomainErrors = {
     /**
      * Validation Exception
      */
@@ -658,29 +706,28 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainErrors = {
     };
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainError = ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainErrors[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainErrors];
+export type ApiV1TeamsTeamIdDomainsCreateDomainError = ApiV1TeamsTeamIdDomainsCreateDomainErrors[keyof ApiV1TeamsTeamIdDomainsCreateDomainErrors];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponses = {
+export type ApiV1TeamsTeamIdDomainsCreateDomainResponses = {
     /**
      * Document created, URL follows
      */
     201: Domain;
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponse = ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsCreateDomainResponses];
+export type ApiV1TeamsTeamIdDomainsCreateDomainResponse = ApiV1TeamsTeamIdDomainsCreateDomainResponses[keyof ApiV1TeamsTeamIdDomainsCreateDomainResponses];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainData = {
+export type ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainData = {
     body?: never;
     path: {
         domain_id: string;
-        project_id: string;
         team_id: string;
     };
     query?: never;
-    url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}';
+    url: '/api/v1/teams/{team_id}/domains/{domain_id}';
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainErrors = {
+export type ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainErrors = {
     /**
      * Validation Exception
      */
@@ -691,29 +738,28 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainErrors =
     };
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainError = ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainErrors[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainErrors];
+export type ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainError = ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainErrors[keyof ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainErrors];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponses = {
+export type ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponses = {
     /**
      * Request fulfilled, nothing follows
      */
     204: void;
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponse = ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdDeleteDomainResponses];
+export type ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponse = ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponses[keyof ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponses];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainData = {
+export type ApiV1TeamsTeamIdDomainsDomainIdGetDomainData = {
     body?: never;
     path: {
         domain_id: string;
-        project_id: string;
         team_id: string;
     };
     query?: never;
-    url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}';
+    url: '/api/v1/teams/{team_id}/domains/{domain_id}';
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainErrors = {
+export type ApiV1TeamsTeamIdDomainsDomainIdGetDomainErrors = {
     /**
      * Validation Exception
      */
@@ -724,29 +770,28 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainErrors = {
     };
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainError = ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainErrors[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainErrors];
+export type ApiV1TeamsTeamIdDomainsDomainIdGetDomainError = ApiV1TeamsTeamIdDomainsDomainIdGetDomainErrors[keyof ApiV1TeamsTeamIdDomainsDomainIdGetDomainErrors];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainResponses = {
+export type ApiV1TeamsTeamIdDomainsDomainIdGetDomainResponses = {
     /**
      * Request fulfilled, document follows
      */
     200: Domain;
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainResponse = ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdGetDomainResponses];
+export type ApiV1TeamsTeamIdDomainsDomainIdGetDomainResponse = ApiV1TeamsTeamIdDomainsDomainIdGetDomainResponses[keyof ApiV1TeamsTeamIdDomainsDomainIdGetDomainResponses];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainData = {
+export type ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainData = {
     body: DomainUpdate;
     path: {
         domain_id: string;
-        project_id: string;
         team_id: string;
     };
     query?: never;
-    url: '/api/v1/teams/{team_id}/projects/{project_id}/domains/{domain_id}';
+    url: '/api/v1/teams/{team_id}/domains/{domain_id}';
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainErrors = {
+export type ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainErrors = {
     /**
      * Validation Exception
      */
@@ -757,16 +802,16 @@ export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainErrors =
     };
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainError = ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainErrors[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainErrors];
+export type ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainError = ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainErrors[keyof ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainErrors];
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponses = {
+export type ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponses = {
     /**
      * Request fulfilled, document follows
      */
     200: Domain;
 };
 
-export type ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponse = ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdDomainsDomainIdUpdateDomainResponses];
+export type ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponse = ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponses[keyof ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponses];
 
 export type ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData = {
     body?: never;
@@ -863,8 +908,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData = {
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -896,8 +941,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData = {
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -929,8 +974,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData = {
     body: FormUpdate;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -984,7 +1029,7 @@ export type ApiV1fFormIdCreateSubmissionResponses = {
     /**
      * Document created, URL follows
      */
-    201: Submission | string;
+    201: SubmissionCreateResponseSchema;
 };
 
 export type ApiV1fFormIdCreateSubmissionResponse = ApiV1fFormIdCreateSubmissionResponses[keyof ApiV1fFormIdCreateSubmissionResponses];
@@ -993,9 +1038,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdD
     body?: never;
     path: {
         submission_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1027,9 +1072,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
     body?: never;
     path: {
         submission_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1062,8 +1107,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdF
     path: {
         submission_id: string;
         form_field: string;
-        form_id: string;
         team_id: string;
+        form_id: string;
         project_id: string;
     };
     query?: never;
@@ -1096,8 +1141,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissio
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1156,8 +1201,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFields
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1249,9 +1294,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
     body?: never;
     path: {
         form_field_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1283,9 +1328,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
     body?: never;
     path: {
         form_field_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1317,9 +1362,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
     body: FormFieldUpdate;
     path: {
         form_field_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1351,8 +1396,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsList
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1397,8 +1442,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCrea
     body: NotificationSettingsCreate;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings';
@@ -1430,9 +1475,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1464,9 +1509,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1498,9 +1543,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body: NotificationSettingsUpdate;
     path: {
         notification_settings_id: string;
-        project_id: string;
         team_id: string;
         form_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1939,6 +1984,185 @@ export type ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponses
 };
 
 export type ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponse = ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponses[keyof ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponses];
+
+export type ApiV1TeamsTeamIdInvitationsGetTeamInvitationsData = {
+    body?: never;
+    path: {
+        team_id: string;
+    };
+    query?: {
+        createdBefore?: string | null;
+        createdAfter?: string | null;
+        updatedBefore?: string | null;
+        updatedAfter?: string | null;
+        ids?: Array<string> | null;
+        currentPage?: number;
+        pageSize?: number;
+        searchField?: string | null;
+        searchString?: string | null;
+        searchIgnoreCase?: boolean | null;
+        orderBy?: string | null;
+        sortOrder?: 'asc' | 'desc' | null;
+    };
+    url: '/api/v1/teams/{team_id}/invitations';
+};
+
+export type ApiV1TeamsTeamIdInvitationsGetTeamInvitationsErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdInvitationsGetTeamInvitationsError = ApiV1TeamsTeamIdInvitationsGetTeamInvitationsErrors[keyof ApiV1TeamsTeamIdInvitationsGetTeamInvitationsErrors];
+
+export type ApiV1TeamsTeamIdInvitationsGetTeamInvitationsResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: {
+        items?: Array<TeamInvitation>;
+        /**
+         * Maximal number of items to send.
+         */
+        limit?: number;
+        /**
+         * Offset from the beginning of the query.
+         */
+        offset?: number;
+        /**
+         * Total number of items.
+         */
+        total?: number;
+    };
+};
+
+export type ApiV1TeamsTeamIdInvitationsGetTeamInvitationsResponse = ApiV1TeamsTeamIdInvitationsGetTeamInvitationsResponses[keyof ApiV1TeamsTeamIdInvitationsGetTeamInvitationsResponses];
+
+export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamData = {
+    body: TeamInvitationCreate;
+    path: {
+        team_id: string;
+    };
+    query?: never;
+    url: '/api/v1/teams/{team_id}/invitations';
+};
+
+export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamError = ApiV1TeamsTeamIdInvitationsInviteMemberToTeamErrors[keyof ApiV1TeamsTeamIdInvitationsInviteMemberToTeamErrors];
+
+export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponses = {
+    /**
+     * Document created, URL follows
+     */
+    201: TeamInvitation;
+};
+
+export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponse = ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponses[keyof ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponses];
+
+export type ApiV1TeamsTeamIdMembersGetTeamMembersData = {
+    body?: never;
+    path: {
+        team_id: string;
+    };
+    query?: {
+        createdBefore?: string | null;
+        createdAfter?: string | null;
+        updatedBefore?: string | null;
+        updatedAfter?: string | null;
+        ids?: Array<string> | null;
+        currentPage?: number;
+        pageSize?: number;
+        searchField?: string | null;
+        searchString?: string | null;
+        searchIgnoreCase?: boolean | null;
+        orderBy?: string | null;
+        sortOrder?: 'asc' | 'desc' | null;
+    };
+    url: '/api/v1/teams/{team_id}/members';
+};
+
+export type ApiV1TeamsTeamIdMembersGetTeamMembersErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdMembersGetTeamMembersError = ApiV1TeamsTeamIdMembersGetTeamMembersErrors[keyof ApiV1TeamsTeamIdMembersGetTeamMembersErrors];
+
+export type ApiV1TeamsTeamIdMembersGetTeamMembersResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: {
+        items?: Array<TeamMembership>;
+        /**
+         * Maximal number of items to send.
+         */
+        limit?: number;
+        /**
+         * Offset from the beginning of the query.
+         */
+        offset?: number;
+        /**
+         * Total number of items.
+         */
+        total?: number;
+    };
+};
+
+export type ApiV1TeamsTeamIdMembersGetTeamMembersResponse = ApiV1TeamsTeamIdMembersGetTeamMembersResponses[keyof ApiV1TeamsTeamIdMembersGetTeamMembersResponses];
+
+export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamData = {
+    body?: never;
+    path: {
+        membership_id: string;
+        team_id: string;
+    };
+    query?: never;
+    url: '/api/v1/teams/{team_id}/members/{membership_id}';
+};
+
+export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamError = ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors[keyof ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors];
+
+export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponses = {
+    /**
+     * Request fulfilled, nothing follows
+     */
+    204: void;
+};
+
+export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponse = ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponses[keyof ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponses];
 
 export type ClientOptions = {
     baseURL: `${string}://${string}` | (string & {});

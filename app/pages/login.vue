@@ -4,21 +4,25 @@ import { z } from 'zod';
 
 import type { ApiV1AccessLoginLoginData } from '~/client';
 
-definePageMeta({
-  layout: 'auth',
-});
+definePageMeta({ layout: 'auth' });
+useSeoMeta({ title: 'Login' });
 
-useSeoMeta({
-  title: 'Login',
-});
-
-const { AccessService } = useApi();
+const { logIn } = useAuthApi();
+const { getTeams } = useTeamApi();
+const { teams } = storeToRefs(useTeamsStore());
+const { getProjects } = useProjectApi();
 
 const { isPending, error, mutateAsync } = useMutation({
-  mutationFn: (data: Omit<ApiV1AccessLoginLoginData, 'url'>) => {
-    return AccessService.apiV1AccessLoginLogin(data);
+  mutationFn: (data: ApiV1AccessLoginLoginData['body']) => {
+    return logIn(data);
   },
   async onSuccess() {
+    await getTeams();
+
+    if (teams.value.length) {
+      await getProjects({ teamId: teams.value[0].id });
+    }
+
     await navigateTo('/');
   },
 });
@@ -44,7 +48,7 @@ type Schema = z.output<typeof schema>;
 
 async function onSubmit(data: Schema) {
   try {
-    await mutateAsync({ body: { username: data.email, password: data.password } });
+    await mutateAsync({ username: data.email, password: data.password });
   } catch {
     // swallow error
   }

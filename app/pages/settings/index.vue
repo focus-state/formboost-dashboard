@@ -3,6 +3,9 @@ import { z } from 'zod';
 
 import type { FormSubmitEvent } from '#ui/types';
 
+definePageMeta({ middleware: ['logged-in'] });
+useSeoMeta({ title: 'Settings' });
+
 const fileRef = ref<HTMLInputElement>();
 const isDeleteAccountModalOpen = ref(false);
 
