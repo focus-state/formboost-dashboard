@@ -422,8 +422,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -1109,8 +1109,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -1757,8 +1757,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -1980,7 +1980,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -1990,7 +1990,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2072,7 +2072,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2082,7 +2082,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2157,7 +2157,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2167,7 +2167,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2345,6 +2345,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -2356,16 +2366,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2447,6 +2447,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -2458,16 +2468,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2553,6 +2553,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -2564,16 +2574,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2878,8 +2878,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -2905,7 +2905,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2915,7 +2915,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3213,8 +3213,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -3240,7 +3240,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3250,7 +3250,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3456,6 +3456,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -3467,16 +3477,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3558,6 +3558,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -3569,16 +3579,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3653,6 +3653,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -3664,16 +3674,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3961,8 +3961,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -3988,7 +3988,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3998,7 +3998,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4087,7 +4087,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4097,7 +4097,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4191,6 +4191,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4202,16 +4212,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4293,6 +4293,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4304,16 +4314,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4388,6 +4388,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4399,16 +4409,6 @@
                     },
                     {
                         "name": "form_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4696,8 +4696,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -5368,8 +5368,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -5824,6 +5824,388 @@
                 "deprecated": false
             }
         },
+        "/api/v1/teams/{team_id}/invitations/{invitation_id}": {
+            "delete": {
+                "tags": [
+                    "team invitations"
+                ],
+                "summary": "DeleteInvidation",
+                "description": "Delete a team invitation.",
+                "operationId": "ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidation",
+                "parameters": [
+                    {
+                        "name": "invitation_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Request fulfilled, nothing follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/invitations/my": {
+            "get": {
+                "tags": [
+                    "team invitations"
+                ],
+                "summary": "GetMyTeamInvitations",
+                "description": "Get details about a team.",
+                "operationId": "ApiV1InvitationsMyGetMyTeamInvitations",
+                "parameters": [
+                    {
+                        "name": "createdBefore",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "createdAfter",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "updatedBefore",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "updatedAfter",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "ids",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "type": "array"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "currentPage",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1.0,
+                            "default": 1
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "minimum": 1.0,
+                            "default": 20
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchField",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Field to search"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchString",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Field to search"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "searchIgnoreCase",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Search should be case sensitive"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "title": "Order by field"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "schema": {
+                            "type": [
+                                "null",
+                                "string"
+                            ],
+                            "enum": [
+                                "asc",
+                                "desc",
+                                null
+                            ],
+                            "title": "Field to search",
+                            "default": "desc"
+                        },
+                        "required": false,
+                        "deprecated": false,
+                        "allowEmptyValue": false,
+                        "allowReserved": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "items": {
+                                            "items": {
+                                                "$ref": "#/components/schemas/TeamInvitation"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "limit": {
+                                            "type": "integer",
+                                            "description": "Maximal number of items to send."
+                                        },
+                                        "offset": {
+                                            "type": "integer",
+                                            "description": "Offset from the beginning of the query."
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "description": "Total number of items."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/api/v1/teams/{team_id}/invitations": {
             "get": {
                 "tags": [
@@ -6048,8 +6430,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -6221,14 +6603,98 @@
                 "deprecated": false
             }
         },
-        "/api/v1/teams/{team_id}/members": {
+        "/api/v1/invitations/{invitation_id}/respond": {
+            "patch": {
+                "tags": [
+                    "team invitations"
+                ],
+                "summary": "RespondToInvitation",
+                "description": "Respond to a team invitation.",
+                "operationId": "ApiV1InvitationsInvitationIdRespondRespondToInvitation",
+                "parameters": [
+                    {
+                        "name": "invitation_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TeamInvitationResponse"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TeamInvitation"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/teams/{team_id}/memberships": {
             "get": {
                 "tags": [
                     "Team Members"
                 ],
                 "summary": "GetTeamMembers",
                 "description": "Get details about a team.",
-                "operationId": "ApiV1TeamsTeamIdMembersGetTeamMembers",
+                "operationId": "ApiV1TeamsTeamIdMembershipsGetTeamMembers",
                 "parameters": [
                     {
                         "name": "team_id",
@@ -6445,8 +6911,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -6536,14 +7002,81 @@
                 "deprecated": false
             }
         },
-        "/api/v1/teams/{team_id}/members/{membership_id}": {
+        "/api/v1/teams/{team_id}/leave": {
+            "delete": {
+                "tags": [
+                    "Team Members"
+                ],
+                "summary": "LeaveTeam",
+                "description": "Leave a team.",
+                "operationId": "ApiV1TeamsTeamIdLeaveLeaveTeam",
+                "parameters": [
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Request fulfilled, nothing follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/teams/{team_id}/memberships/{membership_id}": {
             "delete": {
                 "tags": [
                     "Team Members"
                 ],
                 "summary": "RemoveMemberFromTeam",
                 "description": "Revoke a members access to a team.",
-                "operationId": "ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeam",
+                "operationId": "ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeam",
                 "parameters": [
                     {
                         "name": "membership_id",
@@ -8324,6 +8857,10 @@
             },
             "TeamInvitation": {
                 "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
                     "email": {
                         "type": "string",
                         "format": "email"
@@ -8332,13 +8869,40 @@
                         "$ref": "#/components/schemas/TeamRole"
                     },
                     "isAccepted": {
-                        "type": "boolean",
-                        "default": false
+                        "oneOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "invitee": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/TruncatedUser"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "inviter": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/TruncatedUser"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
                     }
                 },
                 "type": "object",
                 "required": [
-                    "email"
+                    "email",
+                    "id"
                 ],
                 "title": "TeamInvitation"
             },
@@ -8357,6 +8921,26 @@
                     "email"
                 ],
                 "title": "TeamInvitationCreate"
+            },
+            "TeamInvitationResponse": {
+                "properties": {
+                    "response": {
+                        "$ref": "#/components/schemas/TeamInvitationResponseOption"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "response"
+                ],
+                "title": "TeamInvitationResponse"
+            },
+            "TeamInvitationResponseOption": {
+                "type": "string",
+                "enum": [
+                    "accept",
+                    "decline"
+                ],
+                "title": "TeamInvitationResponseOption"
             },
             "TeamMembership": {
                 "properties": {
@@ -8456,6 +9040,34 @@
                 "required": [],
                 "title": "TeamUpdate"
             },
+            "TruncatedUser": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "name": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email",
+                    "id"
+                ],
+                "title": "TruncatedUser"
+            },
             "User": {
                 "properties": {
                     "id": {
@@ -8498,6 +9110,21 @@
                             {
                                 "items": {
                                     "$ref": "#/components/schemas/UserTeam"
+                                },
+                                "type": "array",
+                                "default": []
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "default": []
+                    },
+                    "invitations": {
+                        "oneOf": [
+                            {
+                                "items": {
+                                    "$ref": "#/components/schemas/UserTeamInvitation"
                                 },
                                 "type": "array",
                                 "default": []
@@ -8685,6 +9312,47 @@
                 "type": "object",
                 "required": [],
                 "title": "UserTeam"
+            },
+            "UserTeamInvitation": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "teamRole": {
+                        "$ref": "#/components/schemas/TeamRole"
+                    },
+                    "isAccepted": {
+                        "oneOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "inviter": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/TruncatedUser"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email",
+                    "id"
+                ],
+                "title": "UserTeamInvitation"
             },
             "UserUpdate": {
                 "properties": {

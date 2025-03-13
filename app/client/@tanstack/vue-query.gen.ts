@@ -2,7 +2,7 @@
 
 import { type Options, AccessService, UserAdminService, UserService, BillingService, DomainsService, FormsService, SubmissionsService, FormFieldsService, NotificationSettingsService, ProjectsService, UtilsService, TeamsService, TeamInvitationsService, TeamMembersService } from '../sdk.gen';
 import { queryOptions, type UseMutationOptions, type DefaultError } from '@tanstack/vue-query';
-import type { ApiV1AccessLoginLoginData, ApiV1AccessLoginLoginError, ApiV1AccessLoginLoginResponse, ApiV1AccessLogoutLogoutData, ApiV1AccessSignupSignupData, ApiV1AccessSignupSignupError, ApiV1AccessSignupSignupResponse, ApiV1AccessTestTokenTestTokenData, ApiV1AccessTestTokenTestTokenResponse, ApiV1UsersListUsersData, ApiV1UsersCreateUserData, ApiV1UsersCreateUserError, ApiV1UsersCreateUserResponse, ApiV1UsersUserIdDeleteUserData, ApiV1UsersUserIdDeleteUserError, ApiV1UsersUserIdDeleteUserResponse, ApiV1UsersUserIdGetUserData, ApiV1UsersUserIdUpdateUserData, ApiV1UsersUserIdUpdateUserError, ApiV1UsersUserIdUpdateUserResponse, ApiV1UsersMeProfileData, ApiV1BillingWebhookEventHandleEventData, ApiV1BillingWebhookEventHandleEventError, ApiV1TeamsTeamIdDomainsListDomainsData, ApiV1TeamsTeamIdDomainsCreateDomainData, ApiV1TeamsTeamIdDomainsCreateDomainError, ApiV1TeamsTeamIdDomainsCreateDomainResponse, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainData, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainError, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponse, ApiV1TeamsTeamIdDomainsDomainIdGetDomainData, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainData, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainError, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse, ApiV1fFormIdCreateSubmissionData, ApiV1fFormIdCreateSubmissionError, ApiV1fFormIdCreateSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsListProjectsData, ApiV1TeamsTeamIdProjectsCreateProjectData, ApiV1TeamsTeamIdProjectsCreateProjectError, ApiV1TeamsTeamIdProjectsCreateProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectData, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectError, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdGetProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectError, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectResponse, ApiV1HealthCheckHealthData, ApiV1TeamsListTeamsData, ApiV1TeamsCreateTeamData, ApiV1TeamsCreateTeamError, ApiV1TeamsCreateTeamResponse, ApiV1TeamsTeamIdDeleteTeamData, ApiV1TeamsTeamIdDeleteTeamError, ApiV1TeamsTeamIdDeleteTeamResponse, ApiV1TeamsTeamIdGetTeamData, ApiV1TeamsTeamIdUpdateTeamData, ApiV1TeamsTeamIdUpdateTeamError, ApiV1TeamsTeamIdUpdateTeamResponse, ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeData, ApiV1TeamsTeamIdInvitationsGetTeamInvitationsData, ApiV1TeamsTeamIdInvitationsInviteMemberToTeamData, ApiV1TeamsTeamIdInvitationsInviteMemberToTeamError, ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponse, ApiV1TeamsTeamIdMembersGetTeamMembersData, ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamData, ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamError, ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponse } from '../types.gen';
+import type { ApiV1AccessLoginLoginData, ApiV1AccessLoginLoginError, ApiV1AccessLoginLoginResponse, ApiV1AccessLogoutLogoutData, ApiV1AccessSignupSignupData, ApiV1AccessSignupSignupError, ApiV1AccessSignupSignupResponse, ApiV1AccessTestTokenTestTokenData, ApiV1AccessTestTokenTestTokenResponse, ApiV1UsersListUsersData, ApiV1UsersCreateUserData, ApiV1UsersCreateUserError, ApiV1UsersCreateUserResponse, ApiV1UsersUserIdDeleteUserData, ApiV1UsersUserIdDeleteUserError, ApiV1UsersUserIdDeleteUserResponse, ApiV1UsersUserIdGetUserData, ApiV1UsersUserIdUpdateUserData, ApiV1UsersUserIdUpdateUserError, ApiV1UsersUserIdUpdateUserResponse, ApiV1UsersMeProfileData, ApiV1BillingWebhookEventHandleEventData, ApiV1BillingWebhookEventHandleEventError, ApiV1TeamsTeamIdDomainsListDomainsData, ApiV1TeamsTeamIdDomainsCreateDomainData, ApiV1TeamsTeamIdDomainsCreateDomainError, ApiV1TeamsTeamIdDomainsCreateDomainResponse, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainData, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainError, ApiV1TeamsTeamIdDomainsDomainIdDeleteDomainResponse, ApiV1TeamsTeamIdDomainsDomainIdGetDomainData, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainData, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainError, ApiV1TeamsTeamIdDomainsDomainIdUpdateDomainResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsListFormsData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsCreateFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse, ApiV1fFormIdCreateSubmissionData, ApiV1fFormIdCreateSubmissionError, ApiV1fFormIdCreateSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissionsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFieldsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsCreateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDeleteFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGetFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpdateFormFieldResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsListNotificationSettingssData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCreateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdDeleteNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdGetNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsData, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsError, ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNotificationSettingsIdUpdateNotificationSettingsResponse, ApiV1TeamsTeamIdProjectsListProjectsData, ApiV1TeamsTeamIdProjectsCreateProjectData, ApiV1TeamsTeamIdProjectsCreateProjectError, ApiV1TeamsTeamIdProjectsCreateProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectData, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectError, ApiV1TeamsTeamIdProjectsProjectIdDeleteProjectResponse, ApiV1TeamsTeamIdProjectsProjectIdGetProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectData, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectError, ApiV1TeamsTeamIdProjectsProjectIdUpdateProjectResponse, ApiV1HealthCheckHealthData, ApiV1TeamsListTeamsData, ApiV1TeamsCreateTeamData, ApiV1TeamsCreateTeamError, ApiV1TeamsCreateTeamResponse, ApiV1TeamsTeamIdDeleteTeamData, ApiV1TeamsTeamIdDeleteTeamError, ApiV1TeamsTeamIdDeleteTeamResponse, ApiV1TeamsTeamIdGetTeamData, ApiV1TeamsTeamIdUpdateTeamData, ApiV1TeamsTeamIdUpdateTeamError, ApiV1TeamsTeamIdUpdateTeamResponse, ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeData, ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationData, ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationError, ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationResponse, ApiV1InvitationsMyGetMyTeamInvitationsData, ApiV1TeamsTeamIdInvitationsGetTeamInvitationsData, ApiV1TeamsTeamIdInvitationsInviteMemberToTeamData, ApiV1TeamsTeamIdInvitationsInviteMemberToTeamError, ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponse, ApiV1InvitationsInvitationIdRespondRespondToInvitationData, ApiV1InvitationsInvitationIdRespondRespondToInvitationError, ApiV1InvitationsInvitationIdRespondRespondToInvitationResponse, ApiV1TeamsTeamIdMembershipsGetTeamMembersData, ApiV1TeamsTeamIdLeaveLeaveTeamData, ApiV1TeamsTeamIdLeaveLeaveTeamError, ApiV1TeamsTeamIdLeaveLeaveTeamResponse, ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamData, ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamError, ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamResponse } from '../types.gen';
 import type { AxiosError } from 'axios';
 import { client as _heyApiClient } from '../client.gen';
 
@@ -990,6 +990,37 @@ export const apiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeOptions 
     });
 };
 
+export const apiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationMutation = (options?: Partial<Options<ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationResponse, AxiosError<ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationError>, Options<ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationData>> = {
+        mutationFn: async (localOptions) => {
+            const { data } = await TeamInvitationsService.apiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidation({
+                ...options,
+                ...localOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const apiV1InvitationsMyGetMyTeamInvitationsQueryKey = (options?: Options<ApiV1InvitationsMyGetMyTeamInvitationsData>) => createQueryKey('apiV1InvitationsMyGetMyTeamInvitations', options);
+
+export const apiV1InvitationsMyGetMyTeamInvitationsOptions = (options?: Options<ApiV1InvitationsMyGetMyTeamInvitationsData>) => {
+    return queryOptions({
+        queryFn: async ({ queryKey, signal }) => {
+            const { data } = await TeamInvitationsService.apiV1InvitationsMyGetMyTeamInvitations({
+                ...options,
+                ...queryKey[0],
+                signal,
+                throwOnError: true
+            });
+            return data;
+        },
+        queryKey: apiV1InvitationsMyGetMyTeamInvitationsQueryKey(options)
+    });
+};
+
 export const apiV1TeamsTeamIdInvitationsGetTeamInvitationsQueryKey = (options: Options<ApiV1TeamsTeamIdInvitationsGetTeamInvitationsData>) => createQueryKey('apiV1TeamsTeamIdInvitationsGetTeamInvitations', options);
 
 export const apiV1TeamsTeamIdInvitationsGetTeamInvitationsOptions = (options: Options<ApiV1TeamsTeamIdInvitationsGetTeamInvitationsData>) => {
@@ -1038,12 +1069,26 @@ export const apiV1TeamsTeamIdInvitationsInviteMemberToTeamMutation = (options?: 
     return mutationOptions;
 };
 
-export const apiV1TeamsTeamIdMembersGetTeamMembersQueryKey = (options: Options<ApiV1TeamsTeamIdMembersGetTeamMembersData>) => createQueryKey('apiV1TeamsTeamIdMembersGetTeamMembers', options);
+export const apiV1InvitationsInvitationIdRespondRespondToInvitationMutation = (options?: Partial<Options<ApiV1InvitationsInvitationIdRespondRespondToInvitationData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1InvitationsInvitationIdRespondRespondToInvitationResponse, AxiosError<ApiV1InvitationsInvitationIdRespondRespondToInvitationError>, Options<ApiV1InvitationsInvitationIdRespondRespondToInvitationData>> = {
+        mutationFn: async (localOptions) => {
+            const { data } = await TeamInvitationsService.apiV1InvitationsInvitationIdRespondRespondToInvitation({
+                ...options,
+                ...localOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
-export const apiV1TeamsTeamIdMembersGetTeamMembersOptions = (options: Options<ApiV1TeamsTeamIdMembersGetTeamMembersData>) => {
+export const apiV1TeamsTeamIdMembershipsGetTeamMembersQueryKey = (options: Options<ApiV1TeamsTeamIdMembershipsGetTeamMembersData>) => createQueryKey('apiV1TeamsTeamIdMembershipsGetTeamMembers', options);
+
+export const apiV1TeamsTeamIdMembershipsGetTeamMembersOptions = (options: Options<ApiV1TeamsTeamIdMembershipsGetTeamMembersData>) => {
     return queryOptions({
         queryFn: async ({ queryKey, signal }) => {
-            const { data } = await TeamMembersService.apiV1TeamsTeamIdMembersGetTeamMembers({
+            const { data } = await TeamMembersService.apiV1TeamsTeamIdMembershipsGetTeamMembers({
                 ...options,
                 ...queryKey[0],
                 signal,
@@ -1051,14 +1096,28 @@ export const apiV1TeamsTeamIdMembersGetTeamMembersOptions = (options: Options<Ap
             });
             return data;
         },
-        queryKey: apiV1TeamsTeamIdMembersGetTeamMembersQueryKey(options)
+        queryKey: apiV1TeamsTeamIdMembershipsGetTeamMembersQueryKey(options)
     });
 };
 
-export const apiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamMutation = (options?: Partial<Options<ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamData>>) => {
-    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponse, AxiosError<ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamError>, Options<ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamData>> = {
+export const apiV1TeamsTeamIdLeaveLeaveTeamMutation = (options?: Partial<Options<ApiV1TeamsTeamIdLeaveLeaveTeamData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdLeaveLeaveTeamResponse, AxiosError<ApiV1TeamsTeamIdLeaveLeaveTeamError>, Options<ApiV1TeamsTeamIdLeaveLeaveTeamData>> = {
         mutationFn: async (localOptions) => {
-            const { data } = await TeamMembersService.apiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeam({
+            const { data } = await TeamMembersService.apiV1TeamsTeamIdLeaveLeaveTeam({
+                ...options,
+                ...localOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+export const apiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamMutation = (options?: Partial<Options<ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamData>>) => {
+    const mutationOptions: UseMutationOptions<ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamResponse, AxiosError<ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamError>, Options<ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamData>> = {
+        mutationFn: async (localOptions) => {
+            const { data } = await TeamMembersService.apiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeam({
                 ...options,
                 ...localOptions,
                 throwOnError: true
