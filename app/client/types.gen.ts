@@ -238,15 +238,24 @@ export type TeamCreate = {
 };
 
 export type TeamInvitation = {
+    id: string;
     email: string;
     teamRole?: TeamRole;
-    isAccepted?: boolean;
+    isAccepted?: boolean | null;
+    invitee?: TruncatedUser | null;
+    inviter?: TruncatedUser | null;
 };
 
 export type TeamInvitationCreate = {
     email: string;
     teamRole?: TeamRole;
 };
+
+export type TeamInvitationResponse = {
+    response: TeamInvitationResponseOption;
+};
+
+export type TeamInvitationResponseOption = 'accept' | 'decline';
 
 export type TeamMembership = {
     id: string;
@@ -267,6 +276,12 @@ export type TeamUpdate = {
     description?: string | null;
 };
 
+export type TruncatedUser = {
+    id: string;
+    email: string;
+    name?: string | null;
+};
+
 export type User = {
     id: string;
     email: string;
@@ -277,6 +292,7 @@ export type User = {
     createdAt: string;
     updatedAt: string;
     teams?: Array<UserTeam> | null;
+    invitations?: Array<UserTeamInvitation> | null;
 };
 
 export type UserCreate = {
@@ -305,6 +321,14 @@ export type UserTeam = {
     name?: string | null;
     isOwner?: boolean | null;
     teamRole?: TeamRole | null;
+};
+
+export type UserTeamInvitation = {
+    id: string;
+    email: string;
+    teamRole?: TeamRole;
+    isAccepted?: boolean | null;
+    inviter?: TruncatedUser | null;
 };
 
 export type UserUpdate = {
@@ -908,8 +932,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData = {
     body?: never;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -941,8 +965,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData = {
     body?: never;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -974,8 +998,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData = {
     body: FormUpdate;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -1038,9 +1062,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdD
     body?: never;
     path: {
         submission_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1072,9 +1096,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
     body?: never;
     path: {
         submission_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1107,9 +1131,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdF
     path: {
         submission_id: string;
         form_field: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}/file/{form_field}';
@@ -1141,8 +1165,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissio
     body?: never;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1201,8 +1225,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFields
     body?: never;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1294,9 +1318,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
     body?: never;
     path: {
         form_field_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1328,9 +1352,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
     body?: never;
     path: {
         form_field_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1362,9 +1386,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
     body: FormFieldUpdate;
     path: {
         form_field_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1396,8 +1420,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsList
     body?: never;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1442,8 +1466,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCrea
     body: NotificationSettingsCreate;
     path: {
         form_id: string;
-        team_id: string;
         project_id: string;
+        team_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings';
@@ -1475,9 +1499,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1509,9 +1533,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1543,9 +1567,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body: NotificationSettingsUpdate;
     path: {
         notification_settings_id: string;
+        project_id: string;
         team_id: string;
         form_id: string;
-        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1985,6 +2009,94 @@ export type ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponses
 
 export type ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponse = ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponses[keyof ApiV1TeamsTeamIdStorageDirectorySizeGetStorageDirectorySizeResponses];
 
+export type ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationData = {
+    body?: never;
+    path: {
+        invitation_id: string;
+        team_id: string;
+    };
+    query?: never;
+    url: '/api/v1/teams/{team_id}/invitations/{invitation_id}';
+};
+
+export type ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationError = ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationErrors[keyof ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationErrors];
+
+export type ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationResponses = {
+    /**
+     * Request fulfilled, nothing follows
+     */
+    204: void;
+};
+
+export type ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationResponse = ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationResponses[keyof ApiV1TeamsTeamIdInvitationsInvitationIdDeleteInvidationResponses];
+
+export type ApiV1InvitationsMyGetMyTeamInvitationsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        createdBefore?: string | null;
+        createdAfter?: string | null;
+        updatedBefore?: string | null;
+        updatedAfter?: string | null;
+        ids?: Array<string> | null;
+        currentPage?: number;
+        pageSize?: number;
+        searchField?: string | null;
+        searchString?: string | null;
+        searchIgnoreCase?: boolean | null;
+        orderBy?: string | null;
+        sortOrder?: 'asc' | 'desc' | null;
+    };
+    url: '/api/v1/invitations/my';
+};
+
+export type ApiV1InvitationsMyGetMyTeamInvitationsErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1InvitationsMyGetMyTeamInvitationsError = ApiV1InvitationsMyGetMyTeamInvitationsErrors[keyof ApiV1InvitationsMyGetMyTeamInvitationsErrors];
+
+export type ApiV1InvitationsMyGetMyTeamInvitationsResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: {
+        items?: Array<TeamInvitation>;
+        /**
+         * Maximal number of items to send.
+         */
+        limit?: number;
+        /**
+         * Offset from the beginning of the query.
+         */
+        offset?: number;
+        /**
+         * Total number of items.
+         */
+        total?: number;
+    };
+};
+
+export type ApiV1InvitationsMyGetMyTeamInvitationsResponse = ApiV1InvitationsMyGetMyTeamInvitationsResponses[keyof ApiV1InvitationsMyGetMyTeamInvitationsResponses];
+
 export type ApiV1TeamsTeamIdInvitationsGetTeamInvitationsData = {
     body?: never;
     path: {
@@ -2074,7 +2186,38 @@ export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponses = {
 
 export type ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponse = ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponses[keyof ApiV1TeamsTeamIdInvitationsInviteMemberToTeamResponses];
 
-export type ApiV1TeamsTeamIdMembersGetTeamMembersData = {
+export type ApiV1InvitationsInvitationIdRespondRespondToInvitationData = {
+    body: TeamInvitationResponse;
+    path: {
+        invitation_id: string;
+    };
+    query?: never;
+    url: '/api/v1/invitations/{invitation_id}/respond';
+};
+
+export type ApiV1InvitationsInvitationIdRespondRespondToInvitationErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1InvitationsInvitationIdRespondRespondToInvitationError = ApiV1InvitationsInvitationIdRespondRespondToInvitationErrors[keyof ApiV1InvitationsInvitationIdRespondRespondToInvitationErrors];
+
+export type ApiV1InvitationsInvitationIdRespondRespondToInvitationResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: TeamInvitation;
+};
+
+export type ApiV1InvitationsInvitationIdRespondRespondToInvitationResponse = ApiV1InvitationsInvitationIdRespondRespondToInvitationResponses[keyof ApiV1InvitationsInvitationIdRespondRespondToInvitationResponses];
+
+export type ApiV1TeamsTeamIdMembershipsGetTeamMembersData = {
     body?: never;
     path: {
         team_id: string;
@@ -2093,10 +2236,10 @@ export type ApiV1TeamsTeamIdMembersGetTeamMembersData = {
         orderBy?: string | null;
         sortOrder?: 'asc' | 'desc' | null;
     };
-    url: '/api/v1/teams/{team_id}/members';
+    url: '/api/v1/teams/{team_id}/memberships';
 };
 
-export type ApiV1TeamsTeamIdMembersGetTeamMembersErrors = {
+export type ApiV1TeamsTeamIdMembershipsGetTeamMembersErrors = {
     /**
      * Validation Exception
      */
@@ -2107,9 +2250,9 @@ export type ApiV1TeamsTeamIdMembersGetTeamMembersErrors = {
     };
 };
 
-export type ApiV1TeamsTeamIdMembersGetTeamMembersError = ApiV1TeamsTeamIdMembersGetTeamMembersErrors[keyof ApiV1TeamsTeamIdMembersGetTeamMembersErrors];
+export type ApiV1TeamsTeamIdMembershipsGetTeamMembersError = ApiV1TeamsTeamIdMembershipsGetTeamMembersErrors[keyof ApiV1TeamsTeamIdMembershipsGetTeamMembersErrors];
 
-export type ApiV1TeamsTeamIdMembersGetTeamMembersResponses = {
+export type ApiV1TeamsTeamIdMembershipsGetTeamMembersResponses = {
     /**
      * Request fulfilled, document follows
      */
@@ -2130,19 +2273,18 @@ export type ApiV1TeamsTeamIdMembersGetTeamMembersResponses = {
     };
 };
 
-export type ApiV1TeamsTeamIdMembersGetTeamMembersResponse = ApiV1TeamsTeamIdMembersGetTeamMembersResponses[keyof ApiV1TeamsTeamIdMembersGetTeamMembersResponses];
+export type ApiV1TeamsTeamIdMembershipsGetTeamMembersResponse = ApiV1TeamsTeamIdMembershipsGetTeamMembersResponses[keyof ApiV1TeamsTeamIdMembershipsGetTeamMembersResponses];
 
-export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamData = {
+export type ApiV1TeamsTeamIdLeaveLeaveTeamData = {
     body?: never;
     path: {
-        membership_id: string;
         team_id: string;
     };
     query?: never;
-    url: '/api/v1/teams/{team_id}/members/{membership_id}';
+    url: '/api/v1/teams/{team_id}/leave';
 };
 
-export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors = {
+export type ApiV1TeamsTeamIdLeaveLeaveTeamErrors = {
     /**
      * Validation Exception
      */
@@ -2153,16 +2295,48 @@ export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors = {
     };
 };
 
-export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamError = ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors[keyof ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamErrors];
+export type ApiV1TeamsTeamIdLeaveLeaveTeamError = ApiV1TeamsTeamIdLeaveLeaveTeamErrors[keyof ApiV1TeamsTeamIdLeaveLeaveTeamErrors];
 
-export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponses = {
+export type ApiV1TeamsTeamIdLeaveLeaveTeamResponses = {
     /**
      * Request fulfilled, nothing follows
      */
     204: void;
 };
 
-export type ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponse = ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponses[keyof ApiV1TeamsTeamIdMembersMembershipIdRemoveMemberFromTeamResponses];
+export type ApiV1TeamsTeamIdLeaveLeaveTeamResponse = ApiV1TeamsTeamIdLeaveLeaveTeamResponses[keyof ApiV1TeamsTeamIdLeaveLeaveTeamResponses];
+
+export type ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamData = {
+    body?: never;
+    path: {
+        membership_id: string;
+        team_id: string;
+    };
+    query?: never;
+    url: '/api/v1/teams/{team_id}/memberships/{membership_id}';
+};
+
+export type ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamError = ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamErrors[keyof ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamErrors];
+
+export type ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamResponses = {
+    /**
+     * Request fulfilled, nothing follows
+     */
+    204: void;
+};
+
+export type ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamResponse = ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamResponses[keyof ApiV1TeamsTeamIdMembershipsMembershipIdRemoveMemberFromTeamResponses];
 
 export type ClientOptions = {
     baseURL: `${string}://${string}` | (string & {});
