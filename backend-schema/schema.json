@@ -422,8 +422,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -1109,8 +1109,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -1757,8 +1757,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -2241,17 +2241,17 @@
                 "deprecated": false
             }
         },
-        "/api/v1/f/{form_id}": {
+        "/api/v1/s/{submission_link_id}": {
             "post": {
                 "tags": [
                     "submissions"
                 ],
                 "summary": "CreateSubmission",
                 "description": "Create a new submission.",
-                "operationId": "ApiV1FFormIdCreateSubmission",
+                "operationId": "ApiV1SSubmissionLinkIdCreateSubmission",
                 "parameters": [
                     {
-                        "name": "form_id",
+                        "name": "submission_link_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2345,6 +2345,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -2356,16 +2366,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2447,6 +2447,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -2465,6 +2475,71 @@
                         },
                         "required": true,
                         "deprecated": false
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Request fulfilled, nothing follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "submissions"
+                ],
+                "summary": "UpdateSubmission",
+                "description": "Update a submission.",
+                "operationId": "ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmission",
+                "parameters": [
+                    {
+                        "name": "submission_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
                     },
                     {
                         "name": "form_id",
@@ -2475,12 +2550,49 @@
                         },
                         "required": true,
                         "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "team_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SubmissionUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
                 "responses": {
-                    "204": {
-                        "description": "Request fulfilled, nothing follows",
-                        "headers": {}
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Submission"
+                                }
+                            }
+                        }
                     },
                     "400": {
                         "description": "Bad request syntax or unsupported method",
@@ -2553,6 +2665,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -2564,16 +2686,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2878,8 +2990,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -3213,8 +3325,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -3456,6 +3568,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -3467,16 +3589,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3558,6 +3670,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -3569,16 +3691,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3653,6 +3765,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -3664,16 +3786,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3961,8 +4073,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -4191,6 +4303,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -4202,16 +4324,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4293,6 +4405,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -4304,16 +4426,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4388,6 +4500,16 @@
                         "deprecated": false
                     },
                     {
+                        "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
                         "name": "project_id",
                         "in": "path",
                         "schema": {
@@ -4399,16 +4521,6 @@
                     },
                     {
                         "name": "team_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
-                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4696,8 +4808,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -5368,8 +5480,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -6115,8 +6227,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -6430,8 +6542,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -6911,8 +7023,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -7416,6 +7528,10 @@
                     "isActive": {
                         "type": "boolean"
                     },
+                    "submissionLinkId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
                     "fields": {
                         "items": {
                             "$ref": "#/components/schemas/FormField"
@@ -7428,7 +7544,8 @@
                 "required": [
                     "id",
                     "isActive",
-                    "name"
+                    "name",
+                    "submissionLinkId"
                 ],
                 "title": "Form"
             },
@@ -8654,6 +8771,12 @@
                     "isSpam": {
                         "type": "boolean"
                     },
+                    "isArchived": {
+                        "type": "boolean"
+                    },
+                    "hasBeenViewed": {
+                        "type": "boolean"
+                    },
                     "values": {
                         "items": {
                             "$ref": "#/components/schemas/SubmissionValueWithFormFieldData"
@@ -8663,7 +8786,9 @@
                 },
                 "type": "object",
                 "required": [
+                    "hasBeenViewed",
                     "id",
+                    "isArchived",
                     "isSpam",
                     "values"
                 ],
@@ -8688,9 +8813,6 @@
                         "type": "string",
                         "format": "uuid"
                     },
-                    "isSpam": {
-                        "type": "boolean"
-                    },
                     "values": {
                         "items": {
                             "$ref": "#/components/schemas/SubmissionValue"
@@ -8701,10 +8823,46 @@
                 "type": "object",
                 "required": [
                     "id",
-                    "isSpam",
                     "values"
                 ],
                 "title": "SubmissionCreateResponseSchema"
+            },
+            "SubmissionUpdate": {
+                "properties": {
+                    "isSpam": {
+                        "oneOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "isArchived": {
+                        "oneOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "hasBeenViewed": {
+                        "oneOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [],
+                "title": "SubmissionUpdate"
             },
             "SubmissionValue": {
                 "properties": {
