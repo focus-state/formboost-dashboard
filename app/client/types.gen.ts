@@ -48,6 +48,7 @@ export type Form = {
     name: string;
     description?: string | null;
     isActive: boolean;
+    submissionLinkId: string;
     fields?: Array<FormField>;
 };
 
@@ -194,6 +195,8 @@ export type StripeSubscriptionStatus = 'incomplete' | 'incomplete_expired' | 'tr
 export type Submission = {
     id: string;
     isSpam: boolean;
+    isArchived: boolean;
+    hasBeenViewed: boolean;
     values: Array<SubmissionValueWithFormFieldData>;
 };
 
@@ -203,8 +206,13 @@ export type SubmissionCreate = {
 
 export type SubmissionCreateResponseSchema = {
     id: string;
-    isSpam: boolean;
     values: Array<SubmissionValue>;
+};
+
+export type SubmissionUpdate = {
+    isSpam?: boolean | null;
+    isArchived?: boolean | null;
+    hasBeenViewed?: boolean | null;
 };
 
 export type SubmissionValue = {
@@ -1027,16 +1035,16 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponses = {
 
 export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponse = ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormResponses];
 
-export type ApiV1fFormIdCreateSubmissionData = {
+export type ApiV1sSubmissionLinkIdCreateSubmissionData = {
     body: SubmissionCreate;
     path: {
-        form_id: string;
+        submission_link_id: string;
     };
     query?: never;
-    url: '/api/v1/f/{form_id}';
+    url: '/api/v1/s/{submission_link_id}';
 };
 
-export type ApiV1fFormIdCreateSubmissionErrors = {
+export type ApiV1sSubmissionLinkIdCreateSubmissionErrors = {
     /**
      * Validation Exception
      */
@@ -1047,24 +1055,24 @@ export type ApiV1fFormIdCreateSubmissionErrors = {
     };
 };
 
-export type ApiV1fFormIdCreateSubmissionError = ApiV1fFormIdCreateSubmissionErrors[keyof ApiV1fFormIdCreateSubmissionErrors];
+export type ApiV1sSubmissionLinkIdCreateSubmissionError = ApiV1sSubmissionLinkIdCreateSubmissionErrors[keyof ApiV1sSubmissionLinkIdCreateSubmissionErrors];
 
-export type ApiV1fFormIdCreateSubmissionResponses = {
+export type ApiV1sSubmissionLinkIdCreateSubmissionResponses = {
     /**
      * Document created, URL follows
      */
     201: SubmissionCreateResponseSchema;
 };
 
-export type ApiV1fFormIdCreateSubmissionResponse = ApiV1fFormIdCreateSubmissionResponses[keyof ApiV1fFormIdCreateSubmissionResponses];
+export type ApiV1sSubmissionLinkIdCreateSubmissionResponse = ApiV1sSubmissionLinkIdCreateSubmissionResponses[keyof ApiV1sSubmissionLinkIdCreateSubmissionResponses];
 
 export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdDeleteSubmissionData = {
     body?: never;
     path: {
         submission_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1096,9 +1104,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
     body?: never;
     path: {
         submission_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1126,14 +1134,48 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
 
 export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionResponse = ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdGetSubmissionResponses];
 
+export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionData = {
+    body: SubmissionUpdate;
+    path: {
+        submission_id: string;
+        form_id: string;
+        project_id: string;
+        team_id: string;
+    };
+    query?: never;
+    url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
+};
+
+export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionError = ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionErrors[keyof ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionErrors];
+
+export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: Submission;
+};
+
+export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionResponse = ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionResponses[keyof ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdUpdateSubmissionResponses];
+
 export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdFileFormFieldGetSubmissionFileData = {
     body?: never;
     path: {
         submission_id: string;
         form_field: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}/file/{form_field}';
@@ -1318,9 +1360,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
     body?: never;
     path: {
         form_field_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1352,9 +1394,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
     body?: never;
     path: {
         form_field_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1386,9 +1428,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
     body: FormFieldUpdate;
     path: {
         form_field_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1499,9 +1541,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1533,9 +1575,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1567,9 +1609,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body: NotificationSettingsUpdate;
     path: {
         notification_settings_id: string;
+        form_id: string;
         project_id: string;
         team_id: string;
-        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
