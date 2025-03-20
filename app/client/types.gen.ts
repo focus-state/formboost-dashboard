@@ -41,6 +41,11 @@ export type DomainUpdate = {
     description?: string | null;
 };
 
+export type EmailChangeIdentifierData = {
+    identifier: string;
+    totp: string;
+};
+
 export type FieldType = 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'select' | 'tel' | 'text' | 'time' | 'url' | 'week';
 
 export type Form = {
@@ -306,22 +311,17 @@ export type User = {
 export type UserCreate = {
     email: string;
     password: string;
+    password2: string;
     name?: string | null;
-    isSuperuser?: boolean | null;
-    isActive?: boolean | null;
-    isVerified?: boolean | null;
+};
+
+export type UserEmailUpdate = {
+    email: string;
 };
 
 export type UserLogin = {
     username: string;
     password: string;
-};
-
-export type UserRegister = {
-    email: string;
-    password: string;
-    password2: string;
-    name?: string | null;
 };
 
 export type UserTeam = {
@@ -340,11 +340,10 @@ export type UserTeamInvitation = {
 };
 
 export type UserUpdate = {
-    email?: string | null;
     name?: string | null;
-    isSuperuser?: boolean | null;
-    isActive?: boolean | null;
-    isVerified?: boolean | null;
+    currentPassword?: string | null;
+    password?: string | null;
+    password2?: string | null;
 };
 
 export type ApiV1AccessLoginLoginData = {
@@ -395,7 +394,7 @@ export type ApiV1AccessLogoutLogoutResponses = {
 };
 
 export type ApiV1AccessSignupSignupData = {
-    body: UserRegister;
+    body: UserCreate;
     path?: never;
     query?: never;
     url: '/api/v1/access/signup';
@@ -617,6 +616,35 @@ export type ApiV1UsersUserIdUpdateUserResponses = {
 
 export type ApiV1UsersUserIdUpdateUserResponse = ApiV1UsersUserIdUpdateUserResponses[keyof ApiV1UsersUserIdUpdateUserResponses];
 
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestData = {
+    body: UserEmailUpdate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/me/email';
+};
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestError = ApiV1UsersMeEmailInitiateEmailChangeRequestErrors[keyof ApiV1UsersMeEmailInitiateEmailChangeRequestErrors];
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: EmailChangeIdentifierData;
+};
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestResponse = ApiV1UsersMeEmailInitiateEmailChangeRequestResponses[keyof ApiV1UsersMeEmailInitiateEmailChangeRequestResponses];
+
 export type ApiV1UsersMeProfileData = {
     body?: never;
     path?: never;
@@ -632,6 +660,64 @@ export type ApiV1UsersMeProfileResponses = {
 };
 
 export type ApiV1UsersMeProfileResponse = ApiV1UsersMeProfileResponses[keyof ApiV1UsersMeProfileResponses];
+
+export type ApiV1UsersMeUpdateUserData = {
+    body: UserUpdate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/me';
+};
+
+export type ApiV1UsersMeUpdateUserErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersMeUpdateUserError = ApiV1UsersMeUpdateUserErrors[keyof ApiV1UsersMeUpdateUserErrors];
+
+export type ApiV1UsersMeUpdateUserResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: User;
+};
+
+export type ApiV1UsersMeUpdateUserResponse = ApiV1UsersMeUpdateUserResponses[keyof ApiV1UsersMeUpdateUserResponses];
+
+export type ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeData = {
+    body: EmailChangeIdentifierData;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/me/verify-email-change';
+};
+
+export type ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeError = ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeErrors[keyof ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeErrors];
+
+export type ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: User;
+};
+
+export type ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeResponse = ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeResponses[keyof ApiV1UsersMeVerifyEmailChangeVerifyEmailChangeResponses];
 
 export type ApiV1BillingWebhookEventHandleEventData = {
     body: unknown;
@@ -1070,9 +1156,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdD
     body?: never;
     path: {
         submission_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1104,9 +1190,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
     body?: never;
     path: {
         submission_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1138,9 +1224,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdU
     body: SubmissionUpdate;
     path: {
         submission_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1173,8 +1259,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdF
     path: {
         submission_id: string;
         form_field: string;
-        form_id: string;
         project_id: string;
+        form_id: string;
         team_id: string;
     };
     query?: never;
@@ -1360,9 +1446,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
     body?: never;
     path: {
         form_field_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1394,9 +1480,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
     body?: never;
     path: {
         form_field_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1428,9 +1514,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
     body: FormFieldUpdate;
     path: {
         form_field_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1541,9 +1627,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1575,9 +1661,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1609,9 +1695,9 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body: NotificationSettingsUpdate;
     path: {
         notification_settings_id: string;
-        form_id: string;
         project_id: string;
         team_id: string;
+        form_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
