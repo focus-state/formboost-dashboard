@@ -422,8 +422,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -825,14 +825,7 @@
                 "responses": {
                     "200": {
                         "description": "Request fulfilled, document follows",
-                        "headers": {},
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/EmailChangeIdentifierData"
-                                }
-                            }
-                        }
+                        "headers": {}
                     },
                     "400": {
                         "description": "Bad request syntax or unsupported method",
@@ -970,19 +963,84 @@
                 "deprecated": false
             }
         },
-        "/api/v1/users/me/verify-email-change": {
+        "/api/v1/users/request-password-reset": {
             "patch": {
                 "tags": [
                     "user"
                 ],
-                "summary": "VerifyEmailChange",
-                "description": "Update user email.",
-                "operationId": "ApiV1UsersMeVerifyEmailChangeVerifyEmailChange",
+                "summary": "RequestPasswordReset",
+                "description": "Request password reset.",
+                "operationId": "ApiV1UsersRequestPasswordResetRequestPasswordReset",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/EmailChangeIdentifierData"
+                                "$ref": "#/components/schemas/UserEmailUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/reset-password": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "ResetPassword",
+                "description": "Reset password.",
+                "operationId": "ApiV1UsersResetPasswordResetPassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordReset"
                             }
                         }
                     },
@@ -999,6 +1057,165 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/me/verify-email-change/{identifier}": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "VerifyEmailChange",
+                "description": "Update user email.",
+                "operationId": "ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChange",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EmailChangeVerification"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/verify-password-reset/{identifier}": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "VerifyPasswordReset",
+                "description": "Verify password reset.",
+                "operationId": "ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordReset",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordResetVerification"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {}
                     },
                     "400": {
                         "description": "Bad request syntax or unsupported method",
@@ -1323,8 +1540,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -1971,8 +2188,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -2194,7 +2411,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2204,7 +2421,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2286,7 +2503,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2296,7 +2513,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2371,7 +2588,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2381,7 +2598,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2559,16 +2776,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -2580,6 +2787,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2661,16 +2878,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -2682,6 +2889,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2756,16 +2973,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -2777,6 +2984,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2879,7 +3096,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2899,7 +3116,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3204,8 +3421,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -3231,7 +3448,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3241,7 +3458,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3539,8 +3756,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -3566,7 +3783,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3576,7 +3793,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3782,16 +3999,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -3803,6 +4010,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3884,16 +4101,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -3905,6 +4112,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3979,16 +4196,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4000,6 +4207,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4287,8 +4504,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -4314,7 +4531,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4324,7 +4541,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4413,7 +4630,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4423,7 +4640,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4517,16 +4734,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4538,6 +4745,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4619,16 +4836,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4640,6 +4847,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4714,16 +4931,6 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
-                        "in": "path",
-                        "schema": {
-                            "type": "string",
-                            "format": "uuid"
-                        },
-                        "required": true,
-                        "deprecated": false
-                    },
-                    {
                         "name": "team_id",
                         "in": "path",
                         "schema": {
@@ -4735,6 +4942,16 @@
                     },
                     {
                         "name": "form_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    },
+                    {
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -5022,8 +5239,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -5694,8 +5911,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -6441,8 +6658,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -6756,8 +6973,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -7237,8 +7454,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "string",
-                                "null"
+                                "null",
+                                "string"
                             ],
                             "enum": [
                                 "asc",
@@ -7696,21 +7913,17 @@
                 "required": [],
                 "title": "DomainUpdate"
             },
-            "EmailChangeIdentifierData": {
+            "EmailChangeVerification": {
                 "properties": {
-                    "identifier": {
-                        "type": "string"
-                    },
                     "totp": {
                         "type": "string"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "identifier",
                     "totp"
                 ],
-                "title": "EmailChangeIdentifierData"
+                "title": "EmailChangeVerification"
             },
             "FieldType": {
                 "type": "string",
@@ -8727,6 +8940,44 @@
                     "tokenType"
                 ],
                 "title": "OAuth2Login"
+            },
+            "PasswordReset": {
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "totp": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "minLength": 8
+                    },
+                    "password2": {
+                        "type": "string",
+                        "minLength": 8
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "password",
+                    "password2",
+                    "totp"
+                ],
+                "title": "PasswordReset"
+            },
+            "PasswordResetVerification": {
+                "properties": {
+                    "totp": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "totp"
+                ],
+                "title": "PasswordResetVerification"
             },
             "Project": {
                 "properties": {
