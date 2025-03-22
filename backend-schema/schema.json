@@ -422,8 +422,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -1540,8 +1540,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -2188,8 +2188,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -2776,7 +2776,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2786,7 +2786,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2878,7 +2878,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2888,7 +2888,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2973,7 +2973,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2983,7 +2983,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3096,7 +3096,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3106,7 +3106,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3421,8 +3421,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -3756,8 +3756,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -3999,7 +3999,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4009,7 +4009,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4101,7 +4101,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4111,7 +4111,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4196,7 +4196,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4206,7 +4206,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4504,8 +4504,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -4734,7 +4734,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4744,7 +4744,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4836,7 +4836,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4846,7 +4846,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4931,7 +4931,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "form_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4941,7 +4941,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "form_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -5239,8 +5239,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -5911,8 +5911,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -6658,8 +6658,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -6973,8 +6973,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -7454,8 +7454,8 @@
                         "in": "query",
                         "schema": {
                             "type": [
-                                "null",
-                                "string"
+                                "string",
+                                "null"
                             ],
                             "enum": [
                                 "asc",
@@ -9296,7 +9296,7 @@
                     },
                     "values": {
                         "items": {
-                            "$ref": "#/components/schemas/SubmissionValue"
+                            "$ref": "#/components/schemas/SubmissionValueWithFormFieldData"
                         },
                         "type": "array"
                     }
@@ -9344,20 +9344,6 @@
                 "type": "object",
                 "required": [],
                 "title": "SubmissionUpdate"
-            },
-            "SubmissionValue": {
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    "value": {}
-                },
-                "type": "object",
-                "required": [
-                    "id"
-                ],
-                "title": "SubmissionValue"
             },
             "SubmissionValueWithFormFieldData": {
                 "properties": {

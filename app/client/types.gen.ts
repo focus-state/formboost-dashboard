@@ -221,18 +221,13 @@ export type SubmissionCreate = {
 
 export type SubmissionCreateResponseSchema = {
     id: string;
-    values: Array<SubmissionValue>;
+    values: Array<SubmissionValueWithFormFieldData>;
 };
 
 export type SubmissionUpdate = {
     isSpam?: boolean | null;
     isArchived?: boolean | null;
     hasBeenViewed?: boolean | null;
-};
-
-export type SubmissionValue = {
-    id: string;
-    value?: unknown;
 };
 
 export type SubmissionValueWithFormFieldData = {
@@ -1251,8 +1246,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdD
     body?: never;
     path: {
         submission_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1285,8 +1280,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
     body?: never;
     path: {
         submission_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1319,8 +1314,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdU
     body: SubmissionUpdate;
     path: {
         submission_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1354,8 +1349,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdF
     path: {
         submission_id: string;
         form_field: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1541,8 +1536,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
     body?: never;
     path: {
         form_field_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1575,8 +1570,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
     body?: never;
     path: {
         form_field_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1609,8 +1604,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
     body: FormFieldUpdate;
     path: {
         form_field_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1722,8 +1717,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1756,8 +1751,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body?: never;
     path: {
         notification_settings_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
@@ -1790,8 +1785,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     body: NotificationSettingsUpdate;
     path: {
         notification_settings_id: string;
-        team_id: string;
         form_id: string;
+        team_id: string;
         project_id: string;
     };
     query?: never;
