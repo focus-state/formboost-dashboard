@@ -41,6 +41,10 @@ export type DomainUpdate = {
     description?: string | null;
 };
 
+export type EmailChangeVerification = {
+    totp: string;
+};
+
 export type FieldType = 'checkbox' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'month' | 'number' | 'password' | 'radio' | 'range' | 'select' | 'tel' | 'text' | 'time' | 'url' | 'week';
 
 export type Form = {
@@ -161,6 +165,17 @@ export type OAuth2Login = {
     expiresIn?: number | null;
 };
 
+export type PasswordReset = {
+    identifier: string;
+    totp: string;
+    password: string;
+    password2: string;
+};
+
+export type PasswordResetVerification = {
+    totp: string;
+};
+
 export type Project = {
     id: string;
     name: string;
@@ -206,18 +221,13 @@ export type SubmissionCreate = {
 
 export type SubmissionCreateResponseSchema = {
     id: string;
-    values: Array<SubmissionValue>;
+    values: Array<SubmissionValueWithFormFieldData>;
 };
 
 export type SubmissionUpdate = {
     isSpam?: boolean | null;
     isArchived?: boolean | null;
     hasBeenViewed?: boolean | null;
-};
-
-export type SubmissionValue = {
-    id: string;
-    value?: unknown;
 };
 
 export type SubmissionValueWithFormFieldData = {
@@ -306,22 +316,17 @@ export type User = {
 export type UserCreate = {
     email: string;
     password: string;
+    password2: string;
     name?: string | null;
-    isSuperuser?: boolean | null;
-    isActive?: boolean | null;
-    isVerified?: boolean | null;
+};
+
+export type UserEmailUpdate = {
+    email: string;
 };
 
 export type UserLogin = {
     username: string;
     password: string;
-};
-
-export type UserRegister = {
-    email: string;
-    password: string;
-    password2: string;
-    name?: string | null;
 };
 
 export type UserTeam = {
@@ -340,11 +345,10 @@ export type UserTeamInvitation = {
 };
 
 export type UserUpdate = {
-    email?: string | null;
     name?: string | null;
-    isSuperuser?: boolean | null;
-    isActive?: boolean | null;
-    isVerified?: boolean | null;
+    currentPassword?: string | null;
+    password?: string | null;
+    password2?: string | null;
 };
 
 export type ApiV1AccessLoginLoginData = {
@@ -395,7 +399,7 @@ export type ApiV1AccessLogoutLogoutResponses = {
 };
 
 export type ApiV1AccessSignupSignupData = {
-    body: UserRegister;
+    body: UserCreate;
     path?: never;
     query?: never;
     url: '/api/v1/access/signup';
@@ -617,6 +621,33 @@ export type ApiV1UsersUserIdUpdateUserResponses = {
 
 export type ApiV1UsersUserIdUpdateUserResponse = ApiV1UsersUserIdUpdateUserResponses[keyof ApiV1UsersUserIdUpdateUserResponses];
 
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestData = {
+    body: UserEmailUpdate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/me/email';
+};
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestError = ApiV1UsersMeEmailInitiateEmailChangeRequestErrors[keyof ApiV1UsersMeEmailInitiateEmailChangeRequestErrors];
+
+export type ApiV1UsersMeEmailInitiateEmailChangeRequestResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: unknown;
+};
+
 export type ApiV1UsersMeProfileData = {
     body?: never;
     path?: never;
@@ -632,6 +663,151 @@ export type ApiV1UsersMeProfileResponses = {
 };
 
 export type ApiV1UsersMeProfileResponse = ApiV1UsersMeProfileResponses[keyof ApiV1UsersMeProfileResponses];
+
+export type ApiV1UsersMeUpdateUserData = {
+    body: UserUpdate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/me';
+};
+
+export type ApiV1UsersMeUpdateUserErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersMeUpdateUserError = ApiV1UsersMeUpdateUserErrors[keyof ApiV1UsersMeUpdateUserErrors];
+
+export type ApiV1UsersMeUpdateUserResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: User;
+};
+
+export type ApiV1UsersMeUpdateUserResponse = ApiV1UsersMeUpdateUserResponses[keyof ApiV1UsersMeUpdateUserResponses];
+
+export type ApiV1UsersRequestPasswordResetRequestPasswordResetData = {
+    body: UserEmailUpdate;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/request-password-reset';
+};
+
+export type ApiV1UsersRequestPasswordResetRequestPasswordResetErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersRequestPasswordResetRequestPasswordResetError = ApiV1UsersRequestPasswordResetRequestPasswordResetErrors[keyof ApiV1UsersRequestPasswordResetRequestPasswordResetErrors];
+
+export type ApiV1UsersRequestPasswordResetRequestPasswordResetResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: unknown;
+};
+
+export type ApiV1UsersResetPasswordResetPasswordData = {
+    body: PasswordReset;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/reset-password';
+};
+
+export type ApiV1UsersResetPasswordResetPasswordErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersResetPasswordResetPasswordError = ApiV1UsersResetPasswordResetPasswordErrors[keyof ApiV1UsersResetPasswordResetPasswordErrors];
+
+export type ApiV1UsersResetPasswordResetPasswordResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: User;
+};
+
+export type ApiV1UsersResetPasswordResetPasswordResponse = ApiV1UsersResetPasswordResetPasswordResponses[keyof ApiV1UsersResetPasswordResetPasswordResponses];
+
+export type ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeData = {
+    body: EmailChangeVerification;
+    path: {
+        identifier: string;
+    };
+    query?: never;
+    url: '/api/v1/users/me/verify-email-change/{identifier}';
+};
+
+export type ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeError = ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeErrors[keyof ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeErrors];
+
+export type ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: User;
+};
+
+export type ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeResponse = ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeResponses[keyof ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChangeResponses];
+
+export type ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordResetData = {
+    body: PasswordResetVerification;
+    path: {
+        identifier: string;
+    };
+    query?: never;
+    url: '/api/v1/users/verify-password-reset/{identifier}';
+};
+
+export type ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordResetErrors = {
+    /**
+     * Validation Exception
+     */
+    400: {
+        status_code: number;
+        detail: string;
+        extra?: null | Array<unknown> | Array<unknown>;
+    };
+};
+
+export type ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordResetError = ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordResetErrors[keyof ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordResetErrors];
+
+export type ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordResetResponses = {
+    /**
+     * Request fulfilled, document follows
+     */
+    200: unknown;
+};
 
 export type ApiV1BillingWebhookEventHandleEventData = {
     body: unknown;
@@ -940,8 +1116,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdDeleteFormData = {
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -973,8 +1149,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdGetFormData = {
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -1006,8 +1182,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdUpdateFormData = {
     body: FormUpdate;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}';
@@ -1071,8 +1247,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdD
     path: {
         submission_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1105,8 +1281,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdG
     path: {
         submission_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1139,8 +1315,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdU
     path: {
         submission_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}';
@@ -1174,8 +1350,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsSubmissionIdF
         submission_id: string;
         form_field: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/submissions/{submission_id}/file/{form_field}';
@@ -1207,8 +1383,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdSubmissionsListSubmissio
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1267,8 +1443,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsListFormFields
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1361,8 +1537,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdDel
     path: {
         form_field_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1395,8 +1571,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdGet
     path: {
         form_field_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1429,8 +1605,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdFormFieldsFormFieldIdUpd
     path: {
         form_field_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/form-fields/{form_field_id}';
@@ -1462,8 +1638,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsList
     body?: never;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: {
         createdBefore?: string | null;
@@ -1508,8 +1684,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsCrea
     body: NotificationSettingsCreate;
     path: {
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings';
@@ -1542,8 +1718,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     path: {
         notification_settings_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1576,8 +1752,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     path: {
         notification_settings_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';
@@ -1610,8 +1786,8 @@ export type ApiV1TeamsTeamIdProjectsProjectIdFormsFormIdNotificationSettingsNoti
     path: {
         notification_settings_id: string;
         form_id: string;
-        project_id: string;
         team_id: string;
+        project_id: string;
     };
     query?: never;
     url: '/api/v1/teams/{team_id}/projects/{project_id}/forms/{form_id}/notification-settings/{notification_settings_id}';

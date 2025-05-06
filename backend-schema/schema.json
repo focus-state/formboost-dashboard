@@ -124,7 +124,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/UserRegister"
+                                "$ref": "#/components/schemas/UserCreate"
                             }
                         }
                     },
@@ -804,6 +804,71 @@
                 "deprecated": false
             }
         },
+        "/api/v1/users/me/email": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "InitiateEmailChangeRequest",
+                "description": "Update user email.",
+                "operationId": "ApiV1UsersMeEmailInitiateEmailChangeRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmailUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/api/v1/users/me": {
             "get": {
                 "tags": [
@@ -820,6 +885,372 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "UpdateUser",
+                "description": "Update user.",
+                "operationId": "ApiV1UsersMeUpdateUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/request-password-reset": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "RequestPasswordReset",
+                "description": "Request password reset.",
+                "operationId": "ApiV1UsersRequestPasswordResetRequestPasswordReset",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmailUpdate"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/reset-password": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "ResetPassword",
+                "description": "Reset password.",
+                "operationId": "ApiV1UsersResetPasswordResetPassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordReset"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/me/verify-email-change/{identifier}": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "VerifyEmailChange",
+                "description": "Update user email.",
+                "operationId": "ApiV1UsersMeVerifyEmailChangeIdentifierVerifyEmailChange",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EmailChangeVerification"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/v1/users/verify-password-reset/{identifier}": {
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "VerifyPasswordReset",
+                "description": "Verify password reset.",
+                "operationId": "ApiV1UsersVerifyPasswordResetIdentifierVerifyPasswordReset",
+                "parameters": [
+                    {
+                        "name": "identifier",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "deprecated": false
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordResetVerification"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request fulfilled, document follows",
+                        "headers": {}
+                    },
+                    "400": {
+                        "description": "Bad request syntax or unsupported method",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "extra": {
+                                            "additionalProperties": {},
+                                            "type": [
+                                                "null",
+                                                "object",
+                                                "array"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "required": [
+                                        "detail",
+                                        "status_code"
+                                    ],
+                                    "description": "Validation Exception",
+                                    "examples": [
+                                        {
+                                            "status_code": 400,
+                                            "detail": "Bad Request",
+                                            "extra": {}
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -1980,7 +2411,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -1990,7 +2421,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2072,7 +2503,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2082,7 +2513,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2157,7 +2588,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2167,7 +2598,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2355,7 +2786,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2365,7 +2796,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2457,7 +2888,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2467,7 +2898,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2552,7 +2983,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2562,7 +2993,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2675,7 +3106,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -2685,7 +3116,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3017,7 +3448,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3027,7 +3458,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3352,7 +3783,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3362,7 +3793,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3578,7 +4009,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3588,7 +4019,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3680,7 +4111,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3690,7 +4121,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3775,7 +4206,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -3785,7 +4216,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4100,7 +4531,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4110,7 +4541,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4199,7 +4630,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4209,7 +4640,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4313,7 +4744,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4323,7 +4754,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4415,7 +4846,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4425,7 +4856,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4510,7 +4941,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "project_id",
+                        "name": "team_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -4520,7 +4951,7 @@
                         "deprecated": false
                     },
                     {
-                        "name": "team_id",
+                        "name": "project_id",
                         "in": "path",
                         "schema": {
                             "type": "string",
@@ -7482,6 +7913,18 @@
                 "required": [],
                 "title": "DomainUpdate"
             },
+            "EmailChangeVerification": {
+                "properties": {
+                    "totp": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "totp"
+                ],
+                "title": "EmailChangeVerification"
+            },
             "FieldType": {
                 "type": "string",
                 "enum": [
@@ -8498,6 +8941,44 @@
                 ],
                 "title": "OAuth2Login"
             },
+            "PasswordReset": {
+                "properties": {
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "totp": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "minLength": 8
+                    },
+                    "password2": {
+                        "type": "string",
+                        "minLength": 8
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier",
+                    "password",
+                    "password2",
+                    "totp"
+                ],
+                "title": "PasswordReset"
+            },
+            "PasswordResetVerification": {
+                "properties": {
+                    "totp": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "totp"
+                ],
+                "title": "PasswordResetVerification"
+            },
             "Project": {
                 "properties": {
                     "id": {
@@ -8815,7 +9296,7 @@
                     },
                     "values": {
                         "items": {
-                            "$ref": "#/components/schemas/SubmissionValue"
+                            "$ref": "#/components/schemas/SubmissionValueWithFormFieldData"
                         },
                         "type": "array"
                     }
@@ -8863,20 +9344,6 @@
                 "type": "object",
                 "required": [],
                 "title": "SubmissionUpdate"
-            },
-            "SubmissionValue": {
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "format": "uuid"
-                    },
-                    "value": {}
-                },
-                "type": "object",
-                "required": [
-                    "id"
-                ],
-                "title": "SubmissionValue"
             },
             "SubmissionValueWithFormFieldData": {
                 "properties": {
@@ -9316,87 +9783,6 @@
                         "type": "string",
                         "minLength": 8
                     },
-                    "name": {
-                        "oneOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
-                    },
-                    "isSuperuser": {
-                        "oneOf": [
-                            {
-                                "type": "boolean",
-                                "default": false
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": false
-                    },
-                    "isActive": {
-                        "oneOf": [
-                            {
-                                "type": "boolean",
-                                "default": true
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": true
-                    },
-                    "isVerified": {
-                        "oneOf": [
-                            {
-                                "type": "boolean",
-                                "default": false
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ],
-                        "default": false
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "email",
-                    "password"
-                ],
-                "title": "UserCreate"
-            },
-            "UserLogin": {
-                "properties": {
-                    "username": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string",
-                        "minLength": 8
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "password",
-                    "username"
-                ],
-                "title": "UserLogin"
-            },
-            "UserRegister": {
-                "properties": {
-                    "email": {
-                        "type": "string",
-                        "format": "email"
-                    },
-                    "password": {
-                        "type": "string",
-                        "minLength": 8
-                    },
                     "password2": {
                         "type": "string",
                         "minLength": 8
@@ -9418,7 +9804,37 @@
                     "password",
                     "password2"
                 ],
-                "title": "UserRegister"
+                "title": "UserCreate"
+            },
+            "UserEmailUpdate": {
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email"
+                ],
+                "title": "UserEmailUpdate"
+            },
+            "UserLogin": {
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "minLength": 8
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "password",
+                    "username"
+                ],
+                "title": "UserLogin"
             },
             "UserTeam": {
                 "properties": {
@@ -9514,17 +9930,6 @@
             },
             "UserUpdate": {
                 "properties": {
-                    "email": {
-                        "oneOf": [
-                            {
-                                "type": "string",
-                                "format": "email"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
-                    },
                     "name": {
                         "oneOf": [
                             {
@@ -9535,41 +9940,41 @@
                             }
                         ]
                     },
-                    "isSuperuser": {
+                    "currentPassword": {
                         "oneOf": [
                             {
-                                "type": "boolean",
-                                "default": false
+                                "type": "string",
+                                "minLength": 8
                             },
                             {
                                 "type": "null"
                             }
                         ],
-                        "default": false
+                        "minLength": 8
                     },
-                    "isActive": {
+                    "password": {
                         "oneOf": [
                             {
-                                "type": "boolean",
-                                "default": false
+                                "type": "string",
+                                "minLength": 8
                             },
                             {
                                 "type": "null"
                             }
                         ],
-                        "default": false
+                        "minLength": 8
                     },
-                    "isVerified": {
+                    "password2": {
                         "oneOf": [
                             {
-                                "type": "boolean",
-                                "default": false
+                                "type": "string",
+                                "minLength": 8
                             },
                             {
                                 "type": "null"
                             }
                         ],
-                        "default": false
+                        "minLength": 8
                     }
                 },
                 "type": "object",

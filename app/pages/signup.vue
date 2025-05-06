@@ -31,9 +31,9 @@ const fields = [{
 const schema = z.object({
   name: z.string().nonempty(),
   email: z.string().email(),
-  password: z.string().optional(),
-  password2: z.string().min(8).optional(),
-}).refine(data => (data.password && !data.password2) || (!data.password && data.password2), {
+  password: z.string(),
+  password2: z.string().min(8),
+}).refine((data) => (data.password && !data.password2) || (!data.password && data.password2), {
   message: 'Passwords don\'t match.', path: ['password2'],
 });
 
